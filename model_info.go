@@ -2,6 +2,7 @@ package cast
 
 import (
 	"encoding/json"
+	"sort"
 )
 
 /**
@@ -38,4 +39,10 @@ type DataModel struct {
 func (d DataModel) ToJson() string {
 	js, _ := json.Marshal(d)
 	return string(js)
+}
+
+func (d *DataModel) Sort() {
+	sort.Slice(d.Attributes, func(i, j int) bool {
+		return d.Attributes[i].Name < d.Attributes[j].Name
+	})
 }
