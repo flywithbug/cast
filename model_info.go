@@ -50,6 +50,7 @@ type DataModel struct {
 	ParentName   string //父类类名
 	ParentHash   string //父类hash值 md5
 	Hash         string //属性值的Hash md5
+	HashOrigin   string //Hash原值
 }
 
 func (d DataModel) ToJson() string {
@@ -65,16 +66,16 @@ func (d *DataModel) SortAttributesByName() {
 
 func (d *DataModel) HashId() string {
 	d.SortAttributesByName()
-	origin := d.Name + ":["
+	d.HashOrigin = d.Name + ":["
 	for i, v := range d.Attributes {
-		origin += v.Name
+		d.HashOrigin += fmt.Sprintf("(%s,%s)", v.Type, v.Name)
 		if i < len(d.Attributes)-1 {
-			origin += ","
+			d.HashOrigin += ","
 		}
 	}
-	origin += "]"
-	fmt.Println(origin)
-	return utils.Md5(origin)
+	d.HashOrigin += "]"
+	d.Hash = utils.Md5(d.HashOrigin)
+	return d.Hash
 }
 
 func (d DataModel) Valid() bool {

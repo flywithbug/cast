@@ -7,8 +7,10 @@ import (
 
 func TestSort(t *testing.T) {
 	m := DataModel{}
+	m.Name = "test"
 	list := make([]Attribute, 0)
 	a := Attribute{Name: "b"}
+	a.Type = "string"
 	list = append(list, a)
 	a = Attribute{Name: "d"}
 	list = append(list, a)
@@ -38,5 +40,5 @@ func TestSort(t *testing.T) {
 		fmt.Println(v.Name)
 	}
 
-	fmt.Println(m.HashId())
+	fmt.Println(m.HashId()+"::", m.HashOrigin)
 }
