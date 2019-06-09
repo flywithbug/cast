@@ -41,7 +41,7 @@ func (d DataModel) ToJson() string {
 	return string(js)
 }
 
-func (d *DataModel) Sort() {
+func (d *DataModel) SortAttributesByName() {
 	sort.Slice(d.Attributes, func(i, j int) bool {
 		return d.Attributes[i].Name < d.Attributes[j].Name
 	})

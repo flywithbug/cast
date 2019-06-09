@@ -31,7 +31,7 @@ func TestSort(t *testing.T) {
 		fmt.Println(v.Name)
 	}
 
-	m.Sort()
+	m.SortAttributesByName()
 
 	fmt.Println("===-=-=-===")
 	for _, v := range m.Attributes {
