@@ -37,4 +37,6 @@ func TestSort(t *testing.T) {
 	for _, v := range m.Attributes {
 		fmt.Println(v.Name)
 	}
+
+	fmt.Println(m.HashId())
 }
