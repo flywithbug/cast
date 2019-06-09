@@ -23,13 +23,14 @@ const (
  * @description: 属性信息
  */
 type Attribute struct {
-	Name     string `json:"name"`     //属性名
-	Type     string `json:"type"`     //属性类型
-	Notes    string `json:"notes"`    //注释
-	Alias    string `json:"alias"`    //别名：Json 捏取值Key
-	Hash     string `json:"hash"`     //Hash key
-	Required bool   `json:"required"` //是否必须
-	Default  string `json:"default"`  //默认值
+	Name      string `json:"name"`       //属性名
+	ModelName string `json:"model_name"` //属性type 为 Array时 数组元素类型
+	Type      string `json:"type"`       //属性类型
+	Notes     string `json:"notes"`      //注释
+	Alias     string `json:"alias"`      //别名：Json 捏取值Key
+	Hash      string `json:"hash"`       //Hash key
+	Required  bool   `json:"required"`   //是否必须
+	Default   string `json:"default"`    //默认值
 }
 
 /**
