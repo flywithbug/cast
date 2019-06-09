@@ -8,7 +8,14 @@ import (
 	"github.com/flywithbug/utils"
 )
 
-const ()
+const (
+	AttributeTypeString = "String" //String类型
+	AttributeTypeInt    = "Int"    //Int类型
+	AttributeTypeFloat  = "Float"  //浮点数
+	AttributeTypeBool   = "Bool"   //布尔类型
+	AttributeTypeArray  = "Array"  //数组 （只能是其他的类型模型 必须要有ModelId）
+	AttributeTypeObject = "Object" //模型
+)
 
 /**
  * @author  ori
@@ -16,13 +23,13 @@ const ()
  * @description: 属性信息
  */
 type Attribute struct {
-	Name     string `json:"name"`
-	Type     string `json:"type"`
-	Notes    string `json:"notes"`
-	Alias    string `json:"alias"`
-	Hash     string `json:"hash"`
-	Required bool   `json:"required"`
-	Default  string `json:"default"`
+	Name     string `json:"name"`     //属性名
+	Type     string `json:"type"`     //属性类型
+	Notes    string `json:"notes"`    //注释
+	Alias    string `json:"alias"`    //别名：Json 捏取值Key
+	Hash     string `json:"hash"`     //Hash key
+	Required bool   `json:"required"` //是否必须
+	Default  string `json:"default"`  //默认值
 }
 
 /**
@@ -32,7 +39,7 @@ type Attribute struct {
  */
 type DataModel struct {
 	Name         string
-	Type         string //Model , Parameter (返回数据模型，请求参数模型)
+	Type         string //Model , Parameter (返回数据模型，请求参数模型: 默认空值为数据模型)
 	Alias        string
 	Desc         string
 	CreateTime   string
