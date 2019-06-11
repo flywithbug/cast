@@ -9,12 +9,13 @@ import (
 )
 
 const (
-	AttributeTypeString = "String" //String类型
-	AttributeTypeInt    = "Int"    //Int类型
-	AttributeTypeFloat  = "Float"  //浮点数
-	AttributeTypeBool   = "Bool"   //布尔类型
-	AttributeTypeArray  = "Array"  //数组 （只能是其他的类型模型 必须要有ModelId）
-	AttributeTypeObject = "Object" //模型
+	AttributeTypeString = "string"  //String类型
+	AttributeTypeFloat  = "float"   //浮点数
+	AttributeTypeNumber = "number"  //数据Number类型  注意转换时值变化
+	AttributeTypeInt    = "integer" //Int类型
+	AttributeTypeBool   = "boolean" //布尔类型
+	AttributeTypeArray  = "array"   //数组 （只能是其他的类型模型 必须要有ModelId）
+	AttributeTypeObject = "object"  //模型
 )
 
 /**
@@ -24,13 +25,14 @@ const (
  */
 type Attribute struct {
 	Name      string `json:"name"`       //属性名
-	ModelName string `json:"model_name"` //属性type 为 Array时 数组元素类型
+	ModelName string `json:"model_name"` //属性type 为Array数组元素类型
 	Type      string `json:"type"`       //属性类型
-	Notes     string `json:"notes"`      //注释
 	Alias     string `json:"alias"`      //别名：Json 捏取值Key
 	Hash      string `json:"hash"`       //Hash key
 	Required  bool   `json:"required"`   //是否必须
 	Default   string `json:"default"`    //默认值
+	Notes     string `json:"notes"`      //注释,其他信息
+
 }
 
 /**
@@ -39,19 +41,21 @@ type Attribute struct {
  * @description: TODO
  */
 type DataModel struct {
-	Name         string
-	Type         string //Model , Parameter (返回数据模型，请求参数模型: 默认空值为数据模型)
-	Alias        string
-	Desc         string
-	CreateTime   string
-	StartVersion string
-	EndVersion   string
-	Owner        string
-	Attributes   []Attribute
-	ParentName   string //父类类名
-	ParentHash   string //父类hash值 md5
-	Hash         string //属性值的Hash md5
-	HashOrigin   string //Hash原值
+	Name       string
+	Type       string //Model , Parameter (返回数据模型，请求参数模型: 默认空值为数据模型)
+	Alias      string
+	Desc       string
+	Attributes []Attribute
+	ParentName string //父类类名
+	ParentHash string //父类hash值 md5
+	Hash       string //属性值的Hash md5
+	HashOrigin string //Hash原值
+}
+
+type ResponseModel struct {
+	Code string    //返回Code
+	Msg  string    //msg
+	Data DataModel //data body
 }
 
 func (d DataModel) ToJson() string {
