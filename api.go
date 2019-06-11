@@ -21,20 +21,14 @@ const (
 )
 
 type Api struct {
-	Path          string        //请求路径
-	Method        APIMethodType //请求类型  POST <GET <PUT < DELETE < OPTIONS < HEADER
-	Name          string        //接口名称
-	Alias         string        //别名(中文名)
-	StartVersion  string        //起始版本
-	EndVersion    string        //结束版本
-	Version       string        //接口版本号
-	Desc          string        //接口说明
-	UpdateTime    int           //最后更新时间
-	CreateTime    int           //创建时间
-	Parameter     DataModel     //请求参数体
-	ResponseModel DataModel     //返回数据体
-	Status        APIStatusType //接口状态
-
+	Path          string            //请求路径
+	Method        APIMethodType     //请求类型  POST <GET <PUT < DELETE < OPTIONS < HEADER
+	Name          string            //接口名称
+	Alias         string            //别名(中文名)
+	Notes         map[string]string //接口说明注释
+	Parameter     DataModel         //请求参数体
+	ResponseModel DataModel         //返回数据体
+	Status        APIStatusType     //接口状态
 }
 
 func MethodType(methodType APIMethodType) string {

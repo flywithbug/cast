@@ -45,10 +45,11 @@ type DataModel struct {
 	Alias      string
 	Desc       string
 	Attributes []Attribute
-	ParentName string //父类类名
-	ParentHash string //父类hash值 md5
-	Hash       string //属性值的Hash md5
-	HashOrigin string //Hash原值
+	ParentName string            //父类类名
+	ParentHash string            //父类hash值 md5
+	Hash       string            //属性值的Hash md5
+	HashOrigin string            //Hash原值
+	Notes      map[string]string //接口说明注释
 }
 
 type ResponseModel struct {
