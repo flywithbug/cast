@@ -32,7 +32,6 @@ type Attribute struct {
 	Required  bool   `json:"required"`   //是否必须
 	Default   string `json:"default"`    //默认值
 	Notes     string `json:"notes"`      //注释,其他信息
-
 }
 
 /**
