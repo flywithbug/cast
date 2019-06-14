@@ -31,6 +31,8 @@ type Api struct {
 	Status        APIStatusType     //接口状态
 }
 
+
+
 func MethodType(methodType APIMethodType) string {
 	switch methodType {
 	case ApiMethodTypePOST:
