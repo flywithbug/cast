@@ -32,6 +32,7 @@ type Attribute struct {
 	Required  bool   `json:"required"`   //是否必须
 	Default   string `json:"default"`    //默认值
 	Notes     string `json:"notes"`      //注释,其他信息
+	DataModel DataModel
 }
 
 /**
@@ -45,11 +46,10 @@ type DataModel struct {
 	Alias      string
 	Desc       string
 	Attributes []Attribute
-	ParentName string            //父类类名
-	ParentHash string            //父类hash值 md5
-	Hash       string            //属性值的Hash md5
-	HashOrigin string            //Hash原值
-	Notes      map[string]string //接口说明注释
+	ParentName string //父类类名
+	ParentHash string //父类hash值 md5
+	Hash       string //属性值的Hash md5
+	HashOrigin string //Hash原值
 }
 
 type ResponseModel struct {

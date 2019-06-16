@@ -1,5 +1,9 @@
 package cast
 
+import (
+	"encoding/json"
+)
+
 type APIMethodType int
 type APIStatusType int
 
@@ -21,17 +25,24 @@ const (
 )
 
 type Api struct {
-	Path          string            //请求路径
-	Method        APIMethodType     //请求类型  POST <GET <PUT < DELETE < OPTIONS < HEADER
-	Name          string            //接口名称
-	Alias         string            //别名(中文名)
-	Notes         map[string]string //接口说明注释
-	Parameter     DataModel         //请求参数体
-	ResponseModel DataModel         //返回数据体
-	Status        APIStatusType     //接口状态
+	Id            int
+	Path          string        //请求路径
+	Method        APIMethodType //请求类型  POST <GET <PUT < DELETE < OPTIONS < HEADER
+	Name          string        //接口名称
+	Alias         string        //别名(中文名)
+	Notes         string        //接口说明注释
+	Parameter     DataModel     //请求参数体
+	ResponseModel DataModel     //返回数据体
+	Status        APIStatusType //接口状态
+	Author        string
+	AddTime       int
+	UpDateTime    int
 }
 
-
+func (a Api) ToJson() string {
+	js, _ := json.Marshal(a)
+	return string(js)
+}
 
 func MethodType(methodType APIMethodType) string {
 	switch methodType {
