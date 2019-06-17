@@ -56,6 +56,7 @@ func makeTestApi1() Api {
 	api := Api{
 		Id:                993,
 		Name:              "user.ev.ride.getBikesByLoction",
+		Action:            "user.ev.ride.getBikesByLoction",
 		Alias:             "获取附近电动车",
 		Notes:             "根据位置获取附近电动车，目前获取附近500m内的200辆以内车辆",
 		Method:            ApiMethodTypePOST,

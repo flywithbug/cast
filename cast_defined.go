@@ -2,6 +2,7 @@ package cast
 
 import (
 	"fmt"
+	"strings"
 )
 
 var (
@@ -43,4 +44,47 @@ func formatModelName(name string) string {
 //模型名称生产
 func formatParaName(name string) string {
 	return fmt.Sprintf("JYPara%s", name)
+}
+
+//api名称生产
+func formatApiCategoryName(action string) string {
+	action = strings.Replace(action, "user.ev.", "", -1)
+	action = strings.Replace(action, ".", "_", -1)
+	return action
+}
+
+/**
+ * 字符串首字母转化为大写 ios_bbbbbbbb -> iosBbbbbbbbb
+ */
+func strHumpToUpper(str string) string {
+	if len(str) < 1 {
+		return ""
+	}
+	temp := strings.Split(str, "_")
+	var upperStr string
+	for y := 0; y < len(temp); y++ {
+		vv := []rune(temp[y])
+		if y != 0 {
+			for i := 0; i < len(vv); i++ {
+				if i == 0 {
+					vv[i] -= 32
+					upperStr += string(vv[i]) // + string(vv[i+1])
+				} else {
+					upperStr += string(vv[i])
+				}
+			}
+		}
+	}
+	return capitalize(temp[0]) + upperStr
+}
+
+func capitalize(str string) string {
+	if len(str) < 1 {
+		return ""
+	}
+	strArry := []rune(str)
+	if strArry[0] >= 97 && strArry[0] <= 122 {
+		strArry[0] -= 32
+	}
+	return string(strArry)
 }
