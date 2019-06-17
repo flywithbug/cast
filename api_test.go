@@ -45,7 +45,7 @@ func makeLocationBikeApi() Api {
 
 func makeModelList() []DataModel {
 	model0 := DataModel{
-		Name: "JYQueryParaUser_ev_ride_getBikesByLocation",
+		Name: "getBikesByLocation",
 		Type: "Object",
 		Attributes: []Attribute{
 			{Name: "cityCode", Type: "string", Notes: "城市码"},
@@ -56,7 +56,7 @@ func makeModelList() []DataModel {
 		},
 	}
 	model := DataModel{
-		Name: "JYRespUser_ev_ride_getBikesByLocationBikesModel",
+		Name: "getBikesByLocationBikesModel",
 		Type: "Object",
 		Attributes: []Attribute{
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
@@ -66,7 +66,7 @@ func makeModelList() []DataModel {
 		},
 	}
 	model1 := DataModel{
-		Name: "JYQueryParaUser_ev_ride_getBikesByLocation",
+		Name: "QueryPara",
 		Type: "Object",
 		Attributes: []Attribute{
 			{Name: "cityCode", Type: "string", Notes: "城市码"},
@@ -84,16 +84,18 @@ func makeModelList() []DataModel {
 
 func makeTestApi() Api {
 	api := Api{
-		Id:         993,
-		Name:       "user.ev.ride.getBikesByLoction",
-		Alias:      "获取附近电动车",
-		Notes:      "根据位置获取附近电动车，目前获取附近500m内的200辆以内车辆",
-		Method:     ApiMethodTypePOST,
-		Path:       "/api",
-		Author:     "小哈",
-		AddTime:    1531222996,
-		UpDateTime: 1558078875,
-		Status:     APIStatusTypeDone,
+		Id:                993,
+		Name:              "user.ev.ride.getBikesByLoction",
+		Alias:             "获取附近电动车",
+		Notes:             "根据位置获取附近电动车，目前获取附近500m内的200辆以内车辆",
+		Method:            ApiMethodTypePOST,
+		Path:              "/api",
+		Author:            "小哈",
+		AddTime:           1531222996,
+		UpDateTime:        1558078875,
+		Status:            APIStatusTypeDone,
+		ParameterName:     "JYQueryParaUser_ev_ride_getBikesByLocation",
+		ResponseModelName: "getBikesByLocation",
 	}
 	return api
 }

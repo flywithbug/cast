@@ -1,5 +1,9 @@
 package cast
 
+import (
+	"fmt"
+)
+
 func AddModel(model DataModel) bool {
 	if Cache().Exist(model.Name) {
 		return false
@@ -18,20 +22,43 @@ func AddApi(api Api) bool {
 	return true
 }
 
-func Valid() bool {
+func exist(key string) bool {
+	return Cache().Exist(key)
+}
+
+func Valid() error {
 	for k, _ := range Cache().Apis {
-		_, b := GetApi(k)
+		a, b := GetApi(k)
 		if !b {
-			return false
+			return fmt.Errorf("api:%s not exist", k)
+		}
+		if !exist(a.ResponseModelName) {
+			return fmt.Errorf("model:%s not exist", a.ResponseModelName)
+		}
+		if !exist((a.ParameterName)) {
+			return fmt.Errorf("model:%s not exist", (a.ParameterName))
+
 		}
 	}
 	for k, _ := range Cache().Models {
-		_, b := GetDataModel(k)
+		m, b := GetDataModel(k)
 		if !b {
-			return false
+			return fmt.Errorf("model:%s not exist", k)
+
+		}
+		if m.ParentName != "" && m.ParentName != Conf().FileModel.BaseModel && !exist(m.ParentName) {
+			return fmt.Errorf("model:%s not exist", m.ParentName)
+		}
+		for _, a := range m.Attributes {
+			if a.Type == "object" || a.Type == "array" {
+				if !exist(a.Name) {
+					return fmt.Errorf("model:%s not exist", a.Name)
+
+				}
+			}
 		}
 	}
-	return true
+	return nil
 }
 
 func GetApi(key string) (Api, bool) {
@@ -50,6 +77,7 @@ func GetDataModel(key string) (DataModel, bool) {
 		if a, ok := i.(DataModel); ok {
 			return a, ok
 		}
+
 	}
 	return DataModel{}, false
 }
