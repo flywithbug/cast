@@ -11,15 +11,26 @@ func Conf() *Config {
 
 func confInit() *Config {
 	config = &Config{
-		BaseApiClass:   "JYMapiNetworkClient",
-		BaseQueryClass: "JYQueryParameter",
-		BaseModelClass: "JYResponseModel",
+		FileModel: FileModel{
+			ModelImport:   "#import <JYCastKit/JYResponseModel.h>",
+			BaseModel:     "JYResponseModel",
+			ModelPrefix:   "JYResp",
+			ModelSuffix:   "Model",
+			APImport:      "#import <JYCastKit/JYCastKit.h>",
+			ParaBaseModel: "JYQueryParameter",
+			ParaPrefix:    "JYQueryPara",
+			ParaSuffix:    "",
+			APIPrefix:     "mapi_",
+			APISuffix:     "_withModuleType",
+		},
 	}
 	return config
 }
 
+func SetFileModel(model FileModel) {
+	config.FileModel = model
+}
+
 type Config struct {
-	BaseModelClass string //基类模型名称
-	BaseQueryClass string //基类参数模型名称
-	BaseApiClass   string // JYMapiNetworkClient
+	FileModel FileModel
 }
