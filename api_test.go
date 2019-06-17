@@ -46,7 +46,7 @@ func makeLocationBikeApi() Api {
 func makeModelList() []DataModel {
 	model0 := DataModel{
 		Name: "getBikesByLocation",
-		Type: "Object",
+		Type: ModelTypeTypeModel,
 		Attributes: []Attribute{
 			{Name: "cityCode", Type: "string", Notes: "城市码"},
 			{Name: "lng", Type: "number", Notes: "经度"},
@@ -57,7 +57,7 @@ func makeModelList() []DataModel {
 	}
 	model := DataModel{
 		Name: "getBikesByLocationBikesModel",
-		Type: "Object",
+		Type: ModelTypeTypeModel,
 		Attributes: []Attribute{
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
@@ -67,7 +67,7 @@ func makeModelList() []DataModel {
 	}
 	model1 := DataModel{
 		Name: "QueryPara",
-		Type: "Object",
+		Type: ModelTypeTypeParameter,
 		Attributes: []Attribute{
 			{Name: "cityCode", Type: "string", Notes: "城市码"},
 			{Name: "lng", Type: "number", Notes: "经度"},

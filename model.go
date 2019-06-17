@@ -15,6 +15,14 @@ const (
 	AttributeTypeObject = "object"  //模型
 )
 
+type ModelTypeType int
+
+const (
+	_ ModelTypeType = iota
+	ModelTypeTypeParameter
+	ModelTypeTypeModel
+)
+
 /**
  * @author  ori
  * @date 2019-06-08 17:12
@@ -38,8 +46,8 @@ type Attribute struct {
  * @description: TODO
  */
 type DataModel struct {
-	Name       string //模型名称
-	Type       string //Model , Parameter (返回数据模型，请求参数模型: 默认空值为数据模型)
+	Name       string        //模型名称
+	Type       ModelTypeType //Model , Parameter (返回数据模型，请求参数模型: 默认空值为数据模型)
 	Alias      string
 	Desc       string
 	Attributes []Attribute
