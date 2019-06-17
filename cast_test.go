@@ -17,7 +17,7 @@ func TestValid(t *testing.T) {
 func makeModelList1() []DataModel {
 	model0 := DataModel{
 		Name: "getBikesByLocation",
-		Type: "Object",
+		Type: ModelTypeTypeModel,
 		Attributes: []Attribute{
 			{Name: "cityCode", Type: "string", Notes: "城市码"},
 			{Name: "lng", Type: "number", Notes: "经度"},
@@ -28,7 +28,7 @@ func makeModelList1() []DataModel {
 	}
 	model := DataModel{
 		Name: "getBikesByLocationBikesModel",
-		Type: "Object",
+		Type: ModelTypeTypeParameter,
 		Attributes: []Attribute{
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
@@ -38,7 +38,7 @@ func makeModelList1() []DataModel {
 	}
 	model1 := DataModel{
 		Name: "QueryPara",
-		Type: "Object",
+		Type: ModelTypeTypeModel,
 		Attributes: []Attribute{
 			{Name: "cityCode", Type: "string", Notes: "城市码"},
 			{Name: "lng", Type: "number", Notes: "经度"},

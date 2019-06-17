@@ -14,13 +14,12 @@ type FileModel struct {
 }
 
 type ObjectiveFileModel struct {
-	Header      string //文件头
-	ImportH     string //h文件
-	ImportM     string //m文件
-	ClassImport string
-	Interface   string
-	Attribute   string
-
+	Header         string //文件头
+	ImportH        string //h文件
+	ImportM        string //m文件
+	ClassImport    string
+	Interface      string
+	Attribute      string
 	Implementation string
 	Content        string
 }
