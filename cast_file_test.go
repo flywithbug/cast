@@ -36,6 +36,10 @@ func makeDaModel() DataModel {
 }
 
 func TestCastObjective_C_H(t *testing.T) {
-	r, _ := CastModelObjective_C_H(makeDaModel())
-	fmt.Println(r)
+	h, m, _ := CastModelObjective_C_H_M(makeDaModel())
+	fmt.Println(h)
+	fmt.Println("___________________________")
+
+	fmt.Println(m)
+
 }
