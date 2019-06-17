@@ -26,6 +26,7 @@ const (
 
 type Api struct {
 	Id                int
+	Action            string
 	Path              string        //请求路径
 	Method            APIMethodType //请求类型  POST <GET <PUT < DELETE < OPTIONS < HEADER
 	Name              string        //接口名称
