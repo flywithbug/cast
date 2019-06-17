@@ -23,6 +23,7 @@ const (
 	APIStatusTypeUnDone
 	APIStatusTypeDone
 	APIStatusTypeOffline
+	APIStatusTypeUnDefine
 )
 
 type Api struct {
@@ -84,6 +85,19 @@ func MethodType(methodType APIMethodType) string {
 		return "HEADER"
 	}
 	return "UNDEFINE"
+}
+
+func StatusStringType(statusType string) APIStatusType {
+	statusType = strings.ToUpper(statusType)
+	switch statusType {
+	case "UNDONE":
+		return APIStatusTypeUnDone
+	case "DONE":
+		return APIStatusTypeDone
+	case "OFFLINE":
+		return APIStatusTypeOffline
+	}
+	return APIStatusTypeUnDefine
 }
 
 func MethodStringType(methodType string) APIMethodType {
