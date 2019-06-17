@@ -28,7 +28,7 @@ func confInit() *Config {
 }
 
 func SetFileModel(model FileModel) {
-	config.FileModel = model
+	Conf().FileModel = model
 }
 
 type Config struct {
