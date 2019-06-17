@@ -32,10 +32,10 @@ func valid() error {
 		if !b {
 			return fmt.Errorf("api:%s not exist", k)
 		}
-		if !exist(a.ResponseModelName) {
+		if !a.NoResponse && !exist(a.ResponseModelName) {
 			return fmt.Errorf("model:%s not exist", a.ResponseModelName)
 		}
-		if !exist((a.ParameterName)) {
+		if !a.NoParameter && !exist((a.ParameterName)) {
 			return fmt.Errorf("model:%s not exist", (a.ParameterName))
 		}
 	}
