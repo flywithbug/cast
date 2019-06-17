@@ -40,7 +40,8 @@ type Api struct {
 	Author            string
 	AddTime           int
 	UpDateTime        int
-	NoneResponse      bool
+	NoResponse        bool
+	NoParameter       bool
 }
 
 func (a Api) ParameterModel() (DataModel, bool) {
