@@ -23,8 +23,13 @@ func makeDaModel() DataModel {
 		Attributes: []Attribute{
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
 			{Name: "bikeNo2", Type: "int", Notes: "车辆编号"},
+			{Name: "lng", Type: "number", Notes: "经度"},
+			{Name: "lat", Type: "number", Notes: "纬度"},
 			{Name: "bikeNo3", Type: "bool", Notes: "车辆编号"},
-			{Name: "QueryPara", Type: "Object", DataModel: model0},
+			{Name: "QueryPara", Type: "Object", DataModel: model0,
+				ModelName: "GetBikesByLocation"},
+			{Name: "list", Type: "array", DataModel: model0,
+				ModelName: "GetBikesByLocation"},
 		},
 	}
 	return model
