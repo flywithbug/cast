@@ -2,6 +2,7 @@ package cast
 
 import (
 	"encoding/json"
+	"strings"
 )
 
 type APIMethodType int
@@ -83,6 +84,25 @@ func MethodType(methodType APIMethodType) string {
 		return "HEADER"
 	}
 	return "UNDEFINE"
+}
+
+func MethodStringType(methodType string) APIMethodType {
+	methodType = strings.ToUpper(methodType)
+	switch methodType {
+	case "POST":
+		return ApiMethodTypePOST
+	case "GET":
+		return ApiMethodTypeGET
+	case "PUT":
+		return ApiMethodTypePut
+	case "DELETE":
+		return ApiMethodTypeDelete
+	case "OPTIONS":
+		return ApiMethodTypeOptions
+	case "HEADER":
+		return ApiMethodTypeHeader
+	}
+	return ApiMethodTypeGET
 }
 
 func StatusType(statusType APIStatusType) string {
