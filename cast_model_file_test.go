@@ -2,6 +2,7 @@ package cast
 
 import (
 	"fmt"
+	"github.com/flywithbug/file_manager"
 	"testing"
 )
 
@@ -36,10 +37,16 @@ func makeDaModel() DataModel {
 }
 
 func TestCastObjective_C_H(t *testing.T) {
-	h, m, _ := CastModelObjective_C_H_M(makeDaModel())
-	fmt.Println(h)
+
+	obm := CastModelObjective_C_H_M(makeDaModel())
+	fmt.Println(obm.H)
 	fmt.Println("___________________________")
 
-	fmt.Println(m)
+	fmt.Println(obm.M)
+	hName := fmt.Sprintf("%s.h", obm.ModelName)
+	err := file_manager.WriteFileString(hName, obm.M, true)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 }

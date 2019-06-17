@@ -27,11 +27,11 @@ var (
 
 	implementation = "@implementation %s"
 
-	stringProperty    = "@property (nonatomic, copy)  \tNSString *%s"
-	boolProperty      = "@property (nonatomic, assign)\tBOOL %s"
-	numberProperty    = "@property (nonatomic, strong)\tNSNumber *%s"
-	objectProperty    = "@property (nonatomic, strong)\t%s *%s"
-	arrayProperty     = "@property (nonatomic, copy)  \tNSArray <%s *> *%s"
+	stringProperty    = "@property (nonatomic, copy)  \tNSString *%s;"
+	boolProperty      = "@property (nonatomic, assign)\tBOOL %s;"
+	numberProperty    = "@property (nonatomic, strong)\tNSNumber *%s;"
+	objectProperty    = "@property (nonatomic, strong)\t%s *%s;"
+	arrayProperty     = "@property (nonatomic, copy)  \tNSArray <%s *> *%s;"
 	containerProperty = "@\"%s\" : [%s class]"
 )
 
@@ -48,6 +48,9 @@ type ObjectiveFileModel struct {
 	ImportM        string
 	Implementation string
 	ImpContent     string
+
+	H string
+	M string
 }
 
 func (ob *ObjectiveFileModel) formatHeader() {
@@ -120,11 +123,11 @@ func formObjectiveFileModel(model DataModel) *ObjectiveFileModel {
 	return obM
 }
 
-func CastModelObjective_C_H_M(model DataModel) (h, m string, err error) {
+func CastModelObjective_C_H_M(model DataModel) *ObjectiveFileModel {
 	obm := formObjectiveFileModel(model)
-	h = obm.castObjective_C_H()
-	m = obm.castObjective_C_M()
-	return
+	obm.H = obm.castObjective_C_H()
+	obm.M = obm.castObjective_C_M()
+	return obm
 }
 
 func (ob *ObjectiveFileModel) castObjective_C_H() (str string) {
