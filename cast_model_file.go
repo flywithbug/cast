@@ -16,26 +16,8 @@ import (
 //	AttributeTypeObject = "object"  //模型
 //)
 
-var (
-	header = "//\n//  %s.h\n//  JYCastKit\n//\n//  Created by Flywithbug on %s.\n//  " +
-		"Copyright © 2019 hellobike." +
-		" All rights reserved.\n//\n"
-
-	importStr  = "#import <JYCastKit/JYCastKit.h>"
-	importStr1 = "#import \"%s.h\""
-	interF     = "@interface %s : JYResponseModel"
-
-	implementation = "@implementation %s"
-
-	stringProperty    = "@property (nonatomic, copy)  \tNSString *%s;"
-	boolProperty      = "@property (nonatomic, assign)\tBOOL %s;"
-	numberProperty    = "@property (nonatomic, strong)\tNSNumber *%s;"
-	objectProperty    = "@property (nonatomic, strong)\t%s *%s;"
-	arrayProperty     = "@property (nonatomic, copy)  \tNSArray <%s *> *%s;"
-	containerProperty = "@\"%s\" : [%s class]"
-)
-
 type ObjectiveFileModel struct {
+	Type           string //model parameter
 	DataModel      DataModel
 	ModelName      string //模型名字
 	Import         string
@@ -172,9 +154,4 @@ func (ob *ObjectiveFileModel) castObjective_C_M() (str string) {
 	str += "\t\n"
 	str += "\t\n"
 	return str
-}
-
-//模型名称生产
-func formatModelName(name string) string {
-	return fmt.Sprintf("JYResp%s", name)
 }

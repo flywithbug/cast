@@ -27,17 +27,16 @@ func makeModelList1() []DataModel {
 		},
 	}
 	model := DataModel{
-		Name: "getBikesByLocationBikesModel",
+		Name: "QueryPara",
 		Type: ModelTypeTypeParameter,
 		Attributes: []Attribute{
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
-			{Name: "QueryPara", Type: "Object", DataModel: model0},
 		},
 	}
 	model1 := DataModel{
-		Name: "QueryPara",
+		Name: "QueryPara33",
 		Type: ModelTypeTypeModel,
 		Attributes: []Attribute{
 			{Name: "cityCode", Type: "string", Notes: "城市码"},
