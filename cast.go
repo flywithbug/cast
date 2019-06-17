@@ -49,8 +49,8 @@ func valid() error {
 		}
 		for _, a := range m.Attributes {
 			if a.Type == "object" || a.Type == "array" {
-				if !exist(a.Name) {
-					return fmt.Errorf("model:%s not exist", a.Name)
+				if !exist(a.ModelName) {
+					return fmt.Errorf("model:%s not exist", a.ModelName)
 
 				}
 			}
