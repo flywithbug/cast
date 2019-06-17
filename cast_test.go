@@ -6,13 +6,12 @@ import (
 )
 
 func TestValid(t *testing.T) {
-	addApi(makeTestApi1())
-
-	for _, v := range makeModelList1() {
-		addModel(v)
+	err := Cast([]Api{makeTestApi1()}, makeModelList1())
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("success")
 	}
-
-	fmt.Println(valid())
 }
 
 func makeModelList1() []DataModel {

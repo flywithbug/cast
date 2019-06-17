@@ -82,3 +82,16 @@ func getDataModel(key string) (DataModel, bool) {
 
 //------------------------------------------------------------------------------------------------------------//
 //------------------------------------------------------------------------------------------------------------//
+
+func Cast(apis []Api, models []DataModel) error {
+	for _, a := range apis {
+		addApi(a)
+	}
+	for _, a := range models {
+		addModel(a)
+	}
+	if err := valid(); err != nil {
+		return err
+	}
+	return nil
+}
