@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-
 	cast.Cache().Set("a", "b")
 	fmt.Println(cast.Cache().Get("a"))
 }

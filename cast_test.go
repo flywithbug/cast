@@ -6,13 +6,13 @@ import (
 )
 
 func TestValid(t *testing.T) {
-	AddApi(makeTestApi1())
+	addApi(makeTestApi1())
 
 	for _, v := range makeModelList1() {
-		AddModel(v)
+		addModel(v)
 	}
 
-	fmt.Println(Valid())
+	fmt.Println(valid())
 }
 
 func makeModelList1() []DataModel {

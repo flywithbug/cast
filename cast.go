@@ -4,31 +4,31 @@ import (
 	"fmt"
 )
 
-func AddModel(model DataModel) bool {
-	if Cache().Exist(model.Name) {
+func addModel(model DataModel) bool {
+	if Cache().exist(model.Name) {
 		return false
 	}
-	Cache().Set(model.Name, model)
-	Cache().SetModel(model.Name)
+	Cache().set(model.Name, model)
+	Cache().setModel(model.Name)
 	return true
 }
 
-func AddApi(api Api) bool {
-	if Cache().Exist(api.Name) {
+func addApi(api Api) bool {
+	if Cache().exist(api.Name) {
 		return false
 	}
-	Cache().Set(api.Name, api)
-	Cache().SetApi(api.Name)
+	Cache().set(api.Name, api)
+	Cache().setApi(api.Name)
 	return true
 }
 
 func exist(key string) bool {
-	return Cache().Exist(key)
+	return Cache().exist(key)
 }
 
-func Valid() error {
+func valid() error {
 	for k, _ := range Cache().Apis {
-		a, b := GetApi(k)
+		a, b := getApi(k)
 		if !b {
 			return fmt.Errorf("api:%s not exist", k)
 		}
@@ -37,14 +37,12 @@ func Valid() error {
 		}
 		if !exist((a.ParameterName)) {
 			return fmt.Errorf("model:%s not exist", (a.ParameterName))
-
 		}
 	}
 	for k, _ := range Cache().Models {
-		m, b := GetDataModel(k)
+		m, b := getDataModel(k)
 		if !b {
 			return fmt.Errorf("model:%s not exist", k)
-
 		}
 		if m.ParentName != "" && m.ParentName != Conf().FileModel.BaseModel && !exist(m.ParentName) {
 			return fmt.Errorf("model:%s not exist", m.ParentName)
@@ -61,7 +59,7 @@ func Valid() error {
 	return nil
 }
 
-func GetApi(key string) (Api, bool) {
+func getApi(key string) (Api, bool) {
 	i, b := ca.Cache.Get(key)
 	if b {
 		if a, ok := i.(Api); ok {
@@ -71,7 +69,7 @@ func GetApi(key string) (Api, bool) {
 	return Api{}, false
 }
 
-func GetDataModel(key string) (DataModel, bool) {
+func getDataModel(key string) (DataModel, bool) {
 	i, b := ca.Cache.Get(key)
 	if b {
 		if a, ok := i.(DataModel); ok {
@@ -81,3 +79,6 @@ func GetDataModel(key string) (DataModel, bool) {
 	}
 	return DataModel{}, false
 }
+
+//------------------------------------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------//

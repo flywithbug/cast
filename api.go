@@ -40,7 +40,7 @@ type Api struct {
 }
 
 func (a Api) ParameterModel() (DataModel, bool) {
-	in, b := Cache().Get(a.ParameterName)
+	in, b := Cache().get(a.ParameterName)
 	if !b {
 		return DataModel{}, false
 	}
@@ -51,7 +51,7 @@ func (a Api) ParameterModel() (DataModel, bool) {
 }
 
 func (a Api) ResponseModel() (DataModel, bool) {
-	in, b := Cache().Get(a.ResponseModelName)
+	in, b := Cache().get(a.ResponseModelName)
 	if !b {
 		return DataModel{}, false
 	}
