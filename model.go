@@ -2,10 +2,7 @@ package cast
 
 import (
 	"encoding/json"
-	"fmt"
 	"sort"
-
-	"github.com/flywithbug/utils"
 )
 
 const (
@@ -41,15 +38,15 @@ type Attribute struct {
  * @description: TODO
  */
 type DataModel struct {
-	Name       string
+	Name       string //模型名称
 	Type       string //Model , Parameter (返回数据模型，请求参数模型: 默认空值为数据模型)
 	Alias      string
 	Desc       string
 	Attributes []Attribute
 	ParentName string //父类类名
-	ParentHash string //父类hash值 md5
-	Hash       string //属性值的Hash md5
-	HashOrigin string //Hash原值
+	//ParentHash string //父类hash值 md5
+	//Hash       string //属性值的Hash md5
+	//HashOrigin string //Hash原值
 }
 
 type ResponseModel struct {
@@ -69,19 +66,19 @@ func (d *DataModel) SortAttributesByName() {
 	})
 }
 
-func (d *DataModel) HashId() string {
-	d.SortAttributesByName()
-	d.HashOrigin = d.Name + ":["
-	for i, v := range d.Attributes {
-		d.HashOrigin += fmt.Sprintf("(%s,%s)", v.Type, v.Name)
-		if i < len(d.Attributes)-1 {
-			d.HashOrigin += ","
-		}
-	}
-	d.HashOrigin += "]"
-	d.Hash = utils.Md5(d.HashOrigin)
-	return d.Hash
-}
+//func (d *DataModel) HashId() string {
+//	d.SortAttributesByName()
+//	d.HashOrigin = d.Name + ":["
+//	for i, v := range d.Attributes {
+//		d.HashOrigin += fmt.Sprintf("(%s,%s)", v.Type, v.Name)
+//		if i < len(d.Attributes)-1 {
+//			d.HashOrigin += ","
+//		}
+//	}
+//	d.HashOrigin += "]"
+//	d.Hash = utils.Md5(d.HashOrigin)
+//	return d.Hash
+//}
 
 func (d DataModel) Valid() bool {
 	if d.Name == "" {

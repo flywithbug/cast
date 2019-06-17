@@ -25,18 +25,40 @@ const (
 )
 
 type Api struct {
-	Id            int
-	Path          string        //请求路径
-	Method        APIMethodType //请求类型  POST <GET <PUT < DELETE < OPTIONS < HEADER
-	Name          string        //接口名称
-	Alias         string        //别名(中文名)
-	Notes         string        //接口说明注释
-	Parameter     DataModel     //请求参数体
-	ResponseModel DataModel     //返回数据体
-	Status        APIStatusType //接口状态
-	Author        string
-	AddTime       int
-	UpDateTime    int
+	Id                int
+	Path              string        //请求路径
+	Method            APIMethodType //请求类型  POST <GET <PUT < DELETE < OPTIONS < HEADER
+	Name              string        //接口名称
+	Alias             string        //别名(中文名)
+	Notes             string        //接口说明注释
+	ParameterName     string        //请求参数体 key
+	ResponseModelName string        //返回数据体 key
+	Status            APIStatusType //接口状态
+	Author            string
+	AddTime           int
+	UpDateTime        int
+}
+
+func (a Api) ParameterModel() (DataModel, bool) {
+	in, b := Cache().Get(a.ParameterName)
+	if !b {
+		return DataModel{}, false
+	}
+	if m, ok := in.(DataModel); ok {
+		return m, ok
+	}
+	return DataModel{}, false
+}
+
+func (a Api) ResponseModel() (DataModel, bool) {
+	in, b := Cache().Get(a.ResponseModelName)
+	if !b {
+		return DataModel{}, false
+	}
+	if m, ok := in.(DataModel); ok {
+		return m, ok
+	}
+	return DataModel{}, false
 }
 
 func (a Api) ToJson() string {
@@ -72,4 +94,9 @@ func StatusType(statusType APIStatusType) string {
 		return "已下线"
 	}
 	return "UNDEFINE"
+}
+
+func makeObjective_cFiles(api Api) (h, m string, err error) {
+
+	return
 }

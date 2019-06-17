@@ -3,6 +3,12 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "xQ8eAYS3DssIr2daF0PakC/u0C4=",
+			"path": "github.com/flywithbug/cache",
+			"revision": "f899fb72689e00e7c489705b1cbb9501bb42ce44",
+			"revisionTime": "2019-06-15T11:10:17Z"
+		},
+		{
 			"checksumSHA1": "9XXP1h9B2FlbAhm2tBLrc/pFW2s=",
 			"path": "github.com/flywithbug/utils",
 			"revision": "51167c4a336885fd8fb89354c4fcd4610cf2d6ad",

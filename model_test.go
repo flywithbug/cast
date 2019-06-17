@@ -40,5 +40,5 @@ func TestSort(t *testing.T) {
 		fmt.Println(v.Name)
 	}
 
-	fmt.Println(m.HashId()+"::", m.HashOrigin)
+	//fmt.Println(m.HashId()+"::", m.HashOrigin)
 }
