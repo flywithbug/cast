@@ -22,8 +22,8 @@ func makeDaModel() DataModel {
 		Type: ModelTypeTypeModel,
 		Attributes: []Attribute{
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
-			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
-			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
+			{Name: "bikeNo2", Type: "int", Notes: "车辆编号"},
+			{Name: "bikeNo3", Type: "bool", Notes: "车辆编号"},
 			{Name: "QueryPara", Type: "Object", DataModel: model0},
 		},
 	}
