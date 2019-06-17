@@ -75,7 +75,6 @@ func getDataModel(key string) (DataModel, bool) {
 		if a, ok := i.(DataModel); ok {
 			return a, ok
 		}
-
 	}
 	return DataModel{}, false
 }
