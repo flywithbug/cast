@@ -63,6 +63,9 @@ func (ob *ObjectiveModelFileModel) formatAttributesAndImport() {
 	var str string
 	containerModel := make(map[string]string)
 	for _, v := range ob.DataModel.Attributes {
+		if Conf().PropertyFilter[v.Name] {
+			continue
+		}
 		switch strings.ToLower(v.Type) {
 		case "string":
 			str += fmt.Sprintf(stringProperty, v.Name)
