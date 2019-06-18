@@ -74,7 +74,3 @@ func (ca *CacheModel) allItems() map[string]c.Item {
 func (ca *CacheModel) setErrorMap(key int, value interface{}) {
 	ca.ErrorApi[key] = value
 }
-
-func (ca *CacheModel) get(key string) (interface{}, bool) {
-	return ca.Cache.Get(key)
-}
