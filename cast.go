@@ -114,7 +114,7 @@ func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel 
 			M:    obm.M,
 		}
 		list = append(list, obF)
-		fmt.Println(obF.Name)
+		//fmt.Println(obF.Name)
 	}
 
 	for _, v := range models {
@@ -125,7 +125,7 @@ func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel 
 			M:    obm.M,
 		}
 		list = append(list, obF)
-		fmt.Println(obF.Name)
+		//fmt.Println(obF.Name)
 
 	}
 
