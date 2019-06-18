@@ -101,8 +101,13 @@ func Cast(apis []Api, models []DataModel) ([]ObjectiveCFileModel, error) {
 
 func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel {
 	list := make([]ObjectiveCFileModel, 0)
+
 	for _, v := range apis {
 		obm := CastApiObjective_C_H_M(v)
+		if obm != nil {
+			fmt.Println(v.Action)
+			continue
+		}
 		obF := ObjectiveCFileModel{
 			Name: obm.ApiFullName,
 			H:    obm.H,

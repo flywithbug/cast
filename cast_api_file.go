@@ -167,7 +167,7 @@ func (a *ObjectiveAPIFileModel) formApiMFileString() {
 func CastApiObjective_C_H_M(model Api) *ObjectiveAPIFileModel {
 	obm := formObjectiveAPIFileModel(model)
 	if obm == nil {
-		fmt.Println(obm)
+		return nil
 	}
 	obm.formContainerString()
 	return obm
