@@ -2,9 +2,6 @@ package cast
 
 import (
 	"fmt"
-	"strings"
-
-	"github.com/flywithbug/file_manager"
 )
 
 func addModel(model DataModel) bool {
@@ -112,6 +109,7 @@ func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel 
 			Name: obm.ApiFullName,
 			H:    obm.H,
 			M:    obm.M,
+			Type: "api",
 		}
 		list = append(list, obF)
 		//fmt.Println(obF.Name)
@@ -123,6 +121,7 @@ func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel 
 			Name: obm.ModelName,
 			H:    obm.H,
 			M:    obm.M,
+			Type: "model",
 		}
 		list = append(list, obF)
 		//fmt.Println(obF.Name)
@@ -132,22 +131,23 @@ func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel 
 	return list
 }
 
-func Cast2Files(apis []Api, models []DataModel, path string) error {
-	//var wg sync.WaitGroup
-
-	list, err := Cast(apis, models)
-	if err != nil {
-		return err
-	}
-	if !strings.HasSuffix(path, "/") {
-		path += "/"
-	}
-	for _, v := range list {
-		hName := fmt.Sprintf("%s.h", v.Name)
-		err = file_manager.WriteFileString(path+hName, v.H, true)
-
-		mName := fmt.Sprintf("%s.m", v.Name)
-		err = file_manager.WriteFileString(path+mName, v.M, true)
-	}
-	return err
-}
+//func Cast2Files(apis []Api, models []DataModel, path string) error {
+//	//var wg sync.WaitGroup
+//
+//	list, err := Cast(apis, models)
+//	if err != nil {
+//		return err
+//	}
+//	if !strings.HasSuffix(path, "/") {
+//		path += "/"
+//	}
+//	for _, v := range list {
+//		hName := fmt.Sprintf("%s.h", v.Name)
+//		err = file_manager.WriteFileString(path+hName, v.H, true)
+//
+//		mName := fmt.Sprintf("%s.m", v.Name)
+//		err = file_manager.WriteFileString(path+mName, v.M, true)
+//
+//	}
+//	return err
+//}

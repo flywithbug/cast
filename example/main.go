@@ -60,14 +60,7 @@ func main() {
 }
 
 func castFiles() {
-	api := makeTestApi1()
-	list := makeModelList1()
-	err := cast.Cast2Files([]cast.Api{api}, list, "./")
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println("success")
-	}
+
 }
 
 func makeFiles() {
