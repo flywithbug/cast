@@ -14,6 +14,10 @@ func TestFormObjectiveAPIFileModel(t *testing.T) {
 	} else {
 		fmt.Println("success")
 	}
-	FormObjectiveAPIFileModel(api)
+	a := FormObjectiveAPIFileModel(api)
+
+	fmt.Println(a.H)
+	fmt.Println("-----------------------------------")
+	fmt.Println(a.M)
 
 }

@@ -11,4 +11,6 @@ type FileModel struct {
 	ParaSuffix    string //空
 	APIPrefix     string //mapi_
 	APISuffix     string //_withModuleType:
+
+	APIClientClass string
 }

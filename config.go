@@ -12,16 +12,17 @@ func Conf() *Config {
 func confInit() *Config {
 	config = &Config{
 		FileModel: FileModel{
-			ModelImport:   "#import <JYCastKit/JYResponseModel.h>",
-			BaseModel:     "JYResponseModel",
-			ModelPrefix:   "JYResp",
-			ModelSuffix:   "Model",
-			APImport:      "#import <JYCastKit/JYCastKit.h>",
-			ParaBaseModel: "JYQueryParameter",
-			ParaPrefix:    "JYQueryPara",
-			ParaSuffix:    "",
-			APIPrefix:     "mapi_",
-			APISuffix:     "_withModuleType",
+			ModelImport:    "#import <JYCastKit/JYResponseModel.h>",
+			BaseModel:      "JYResponseModel",
+			ModelPrefix:    "JYResp",
+			ModelSuffix:    "Model",
+			APImport:       "#import <JYCastKit/JYCastKit.h>",
+			ParaBaseModel:  "JYQueryParameter",
+			ParaPrefix:     "JYQueryPara",
+			ParaSuffix:     "",
+			APIClientClass: "JYMapiNetworkClient",
+			APIPrefix:      "mapi_",
+			APISuffix:      "_withModuleType",
 		},
 	}
 	return config

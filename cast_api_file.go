@@ -49,7 +49,7 @@ func FormObjectiveAPIFileModel(aM Api) (apiFileM *ObjectiveAPIFileModel) {
 	apiFileM.ParaModel = dM
 	apiFileM.formHeader()
 
-	return nil
+	return apiFileM
 }
 
 func (a *ObjectiveAPIFileModel) formHeader() {
