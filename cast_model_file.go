@@ -3,7 +3,6 @@ package cast
 import (
 	"fmt"
 	"strings"
-	"time"
 )
 
 //const (
@@ -36,14 +35,11 @@ type ObjectiveModelFileModel struct {
 }
 
 func (ob *ObjectiveModelFileModel) formatHeader() {
-
 	mName := formatModelName(ob.DataModel.Name)
 	if ob.DataModel.Type == ModelTypeTypeParameter {
 		mName = formatParaName(ob.DataModel.Name)
 	}
-	ob.ModelName = mName
-	now := time.Now().Format("2006-01-02")
-	ob.Header = fmt.Sprintf(header, mName, now)
+	ob.Header = fmt.Sprintf(header, mName)
 }
 
 func (ob *ObjectiveModelFileModel) formModelContainerProperty() {

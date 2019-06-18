@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	header = "//\n//  %s.h\n//  JYCastKit\n//\n//  Created by Flywithbug on %s.\n//  " +
+	header = "//\n//  %s.h\n//  JYCastKit\n//\n//  Created by Flywithbug on 2019.6.18.\n//  " +
 		"Copyright © 2019 hellobike." +
 		" All rights reserved.\n//\n"
 

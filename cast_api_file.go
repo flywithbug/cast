@@ -2,7 +2,6 @@ package cast
 
 import (
 	"fmt"
-	"time"
 )
 
 type ObjectiveAPIFileModel struct {
@@ -85,10 +84,8 @@ func (a *ObjectiveAPIFileModel) formContainerString() {
 	a.Interface = fmt.Sprintf("@interface %s (%s)", Conf().FileModel.APIClientClass, a.ApiCategory)
 
 	a.HMethodContainer = fmt.Sprintf(categoryMethod, a.ApiCategory, a.ParaModelName, a.RespModelName)
-	//mName := formatModelName(a.Api.Name)
-	//ob.ModelName = mName
-	now := time.Now().Format("2006-01-02")
-	a.Header = fmt.Sprintf(header, a.ApiFullName, now)
+
+	a.Header = fmt.Sprintf(header, a.ApiFullName)
 
 	a.Import = Conf().FileModel.APImport
 	a.Import += "\n"
