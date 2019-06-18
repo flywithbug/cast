@@ -61,7 +61,7 @@ func main() {
 func makeFiles() {
 	api := makeTestApi1()
 	list := makeModelList1()
-	err := cast.Cast([]cast.Api{api}, list)
+	_, err := cast.Cast([]cast.Api{api}, list)
 	if err != nil {
 		fmt.Println(err)
 	} else {

@@ -82,7 +82,7 @@ func getDataModel(key string) (DataModel, bool) {
 //------------------------------------------------------------------------------------------------------------//
 //------------------------------------------------------------------------------------------------------------//
 
-func Cast(apis []Api, models []DataModel) error {
+func Cast(apis []Api, models []DataModel) ([]ObjectiveCFileModel, error) {
 	for _, a := range apis {
 		addApi(a)
 	}
@@ -90,11 +90,35 @@ func Cast(apis []Api, models []DataModel) error {
 		addModel(a)
 	}
 	if err := valid(); err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	list := cast2ObjectiveCFiles(apis, models)
+	return list, nil
 }
 
-//func Cast2ObjectiveCFiles()[]ObjectiveCFileModel  {
-//
-//}
+func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel {
+	list := make([]ObjectiveCFileModel, 0)
+	for _, v := range apis {
+		obm := CastApiObjective_C_H_M(v)
+		mName := fmt.Sprintf("%s.m", obm.ApiFullName)
+		obF := ObjectiveCFileModel{
+			Name: mName,
+			H:    obm.H,
+			M:    obm.M,
+		}
+		list = append(list, obF)
+	}
+
+	for _, v := range models {
+		obm := CastModelObjective_C_H_M(v)
+		mName := fmt.Sprintf("%s.m", obm.ModelName)
+		obF := ObjectiveCFileModel{
+			Name: mName,
+			H:    obm.H,
+			M:    obm.M,
+		}
+		list = append(list, obF)
+	}
+
+	return list
+}
