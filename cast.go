@@ -144,7 +144,6 @@ func Cast2Files(apis []Api, models []DataModel, path string) error {
 	if !strings.HasSuffix(path, "/") {
 		path += "/"
 	}
-	var err error
 	for _, v := range list {
 		wg.Add(1)
 		go func() {
