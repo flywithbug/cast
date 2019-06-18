@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strings"
 
+	"sync"
+
 	"github.com/flywithbug/file_manager"
 )
 
@@ -132,6 +134,8 @@ func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel 
 	return list
 }
 
+var wg sync.WaitGroup
+
 func Cast2Files(apis []Api, models []DataModel, path string) error {
 	list, err := Cast(apis, models)
 	if err != nil {
@@ -140,17 +144,18 @@ func Cast2Files(apis []Api, models []DataModel, path string) error {
 	if !strings.HasSuffix(path, "/") {
 		path += "/"
 	}
+	var err error
 	for _, v := range list {
-		hName := fmt.Sprintf("%s.h", v.Name)
-		err := file_manager.WriteFileString(path+hName, v.H, true)
-		if err != nil {
-			return err
-		}
-		mName := fmt.Sprintf("%s.m", v.Name)
-		err = file_manager.WriteFileString(path+mName, v.M, true)
-		if err != nil {
-			return err
-		}
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			hName := fmt.Sprintf("%s.h", v.Name)
+			err = file_manager.WriteFileString(path+hName, v.H, true)
+
+			mName := fmt.Sprintf("%s.m", v.Name)
+			err = file_manager.WriteFileString(path+mName, v.M, true)
+		}()
 	}
-	return nil
+	wg.Wait()
+	return err
 }
