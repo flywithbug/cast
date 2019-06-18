@@ -40,11 +40,11 @@ var (
 		"\n\t\tprogress:(nullable void (^)(NSProgress *_Nonnull  uploadProgress))uploadProgress" +
 		"\n\t\tsuccess:(nullable void (^)(NSURLSessionDataTask *_Nullable task, %s * _Nullable responseObject))success" +
 		"\n\t\tfailure:(nullable void (^)(NSURLSessionDataTask * _Nullable task,   JYNetError *_Nullable error))failure{" +
-		"\n\tparam.action = [self action];" +
+		"\n\tparam.action = [self %s];" +
 		"\n\treturn [self mapi_post:[self moduleApiServer:type] parameters:param repClass:[%s class] progress:uploadProgress success:success failure:failure];" +
 		"\n}"
 
-	apiAction = "- (NSString *)action{\n\treturn @\"%s\";\n}"
+	//apiAction = "- (NSString *)action{\n\treturn @\"%s\";\n}"
 )
 
 //模型名称生产

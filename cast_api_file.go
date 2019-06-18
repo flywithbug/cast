@@ -100,10 +100,8 @@ func (a *ObjectiveAPIFileModel) formContainerString() {
 	a.ImportM = fmt.Sprintf(importStr1, a.ApiFullName)
 	a.Implementation = fmt.Sprintf("@implementation %s (%s)", Conf().FileModel.APIClientClass, a.ApiCategory)
 
-	a.Action = fmt.Sprintf(apiAction, a.Api.Action)
-
 	a.MImpMethod = fmt.Sprintf(categoryImpMethod, a.ApiCategory,
-		a.ParaModelName, a.RespModelName, a.RespModelName)
+		a.ParaModelName, a.RespModelName, a.Api.Action, a.RespModelName)
 
 	a.formApiHFileString()
 	a.formApiMFileString()
