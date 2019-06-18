@@ -16,7 +16,7 @@ import (
 //	AttributeTypeObject = "object"  //模型
 //)
 
-type ObjectiveFileModel struct {
+type ObjectiveModelFileModel struct {
 	Type           string //model parameter
 	DataModel      DataModel
 	ModelName      string //模型名字
@@ -35,7 +35,7 @@ type ObjectiveFileModel struct {
 	M string
 }
 
-func (ob *ObjectiveFileModel) formatHeader() {
+func (ob *ObjectiveModelFileModel) formatHeader() {
 
 	mName := formatModelName(ob.DataModel.Name)
 	if ob.DataModel.Type == ModelTypeTypeParameter {
@@ -46,7 +46,7 @@ func (ob *ObjectiveFileModel) formatHeader() {
 	ob.Header = fmt.Sprintf(header, mName, now)
 }
 
-func (ob *ObjectiveFileModel) formModelContainerProperty() {
+func (ob *ObjectiveModelFileModel) formModelContainerProperty() {
 	str := "+ (NSDictionary *)modelContainerPropertyGenericClass {\n\t// value should be Class or Class name.\n"
 	str += "\treturn @{"
 	for k, v := range ob.ContainerModel {
@@ -59,7 +59,7 @@ func (ob *ObjectiveFileModel) formModelContainerProperty() {
 	ob.ImpContent = str
 }
 
-func (ob *ObjectiveFileModel) formatAttributesAndImport() {
+func (ob *ObjectiveModelFileModel) formatAttributesAndImport() {
 	var str string
 	containerModel := make(map[string]string)
 	for _, v := range ob.DataModel.Attributes {
@@ -89,8 +89,8 @@ func (ob *ObjectiveFileModel) formatAttributesAndImport() {
 	ob.ContainerModel = containerModel
 }
 
-func formObjectiveFileModel(model DataModel) *ObjectiveFileModel {
-	obM := new(ObjectiveFileModel)
+func formObjectiveModelFileModel(model DataModel) *ObjectiveModelFileModel {
+	obM := new(ObjectiveModelFileModel)
 	obM.DataModel = model
 	obM.formatHeader()
 	obM.formatAttributesAndImport()
@@ -113,14 +113,14 @@ func formObjectiveFileModel(model DataModel) *ObjectiveFileModel {
 	return obM
 }
 
-func CastModelObjective_C_H_M(model DataModel) *ObjectiveFileModel {
-	obm := formObjectiveFileModel(model)
+func CastModelObjective_C_H_M(model DataModel) *ObjectiveModelFileModel {
+	obm := formObjectiveModelFileModel(model)
 	obm.H = obm.castObjective_C_H()
 	obm.M = obm.castObjective_C_M()
 	return obm
 }
 
-func (ob *ObjectiveFileModel) castObjective_C_H() (str string) {
+func (ob *ObjectiveModelFileModel) castObjective_C_H() (str string) {
 	str = ob.Header
 	str += "\t\n"
 	str += ob.Import
@@ -143,7 +143,7 @@ func (ob *ObjectiveFileModel) castObjective_C_H() (str string) {
 	return str
 }
 
-func (ob *ObjectiveFileModel) castObjective_C_M() (str string) {
+func (ob *ObjectiveModelFileModel) castObjective_C_M() (str string) {
 	str = ob.Header
 	str += "\t\n"
 	str += ob.ImportM

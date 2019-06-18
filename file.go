@@ -1,6 +1,7 @@
 package cast
 
-func FileProduction(list []Api) error {
-
-	return nil
+type ObjectiveCFileModel struct {
+	H    string
+	M    string
+	Name string
 }

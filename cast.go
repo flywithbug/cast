@@ -94,3 +94,7 @@ func Cast(apis []Api, models []DataModel) error {
 	}
 	return nil
 }
+
+//func Cast2ObjectiveCFiles()[]ObjectiveCFileModel  {
+//
+//}

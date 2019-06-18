@@ -38,7 +38,7 @@ type ObjectiveAPIFileModel struct {
 	M          string
 }
 
-func FormObjectiveAPIFileModel(aM Api) (apiFileM *ObjectiveAPIFileModel) {
+func formObjectiveAPIFileModel(aM Api) (apiFileM *ObjectiveAPIFileModel) {
 	apiFileM = new(ObjectiveAPIFileModel)
 	apiFileM.ContainerModel = make(map[string]string)
 	apiFileM.Api = aM
@@ -165,7 +165,7 @@ func (a *ObjectiveAPIFileModel) formApiMFileString() {
 }
 
 func CastApiObjective_C_H_M(model Api) *ObjectiveAPIFileModel {
-	obm := FormObjectiveAPIFileModel(model)
+	obm := formObjectiveAPIFileModel(model)
 	obm.formContainerString()
 	return obm
 }
