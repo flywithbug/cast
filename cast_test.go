@@ -6,7 +6,7 @@ import (
 )
 
 func TestValid(t *testing.T) {
-	err := Cast([]Api{makeTestApi1()}, makeModelList1())
+	_, err := Cast([]Api{makeTestApi1()}, makeModelList1())
 	if err != nil {
 		fmt.Println(err)
 	} else {

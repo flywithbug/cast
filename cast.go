@@ -2,6 +2,9 @@ package cast
 
 import (
 	"fmt"
+	"strings"
+
+	"github.com/flywithbug/file_manager"
 )
 
 func addModel(model DataModel) bool {
@@ -100,9 +103,8 @@ func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel 
 	list := make([]ObjectiveCFileModel, 0)
 	for _, v := range apis {
 		obm := CastApiObjective_C_H_M(v)
-		mName := fmt.Sprintf("%s.m", obm.ApiFullName)
 		obF := ObjectiveCFileModel{
-			Name: mName,
+			Name: obm.ApiFullName,
 			H:    obm.H,
 			M:    obm.M,
 		}
@@ -111,9 +113,8 @@ func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel 
 
 	for _, v := range models {
 		obm := CastModelObjective_C_H_M(v)
-		mName := fmt.Sprintf("%s.m", obm.ModelName)
 		obF := ObjectiveCFileModel{
-			Name: mName,
+			Name: obm.ModelName,
 			H:    obm.H,
 			M:    obm.M,
 		}
@@ -121,4 +122,27 @@ func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel 
 	}
 
 	return list
+}
+
+func Cast2Files(apis []Api, models []DataModel, path string) error {
+	list, err := Cast(apis, models)
+	if err != nil {
+		return err
+	}
+	if !strings.HasSuffix(path, "/") {
+		path += "/"
+	}
+	for _, v := range list {
+		hName := fmt.Sprintf("%s.h", v.Name)
+		err := file_manager.WriteFileString(path+hName, v.H, true)
+		if err != nil {
+			return err
+		}
+		mName := fmt.Sprintf("%s.m", v.Name)
+		err = file_manager.WriteFileString(path+mName, v.M, true)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
