@@ -40,7 +40,7 @@ var (
 		"\n\t\tprogress:(nullable void (^)(NSProgress *_Nonnull  uploadProgress))uploadProgress" +
 		"\n\t\tsuccess:(nullable void (^)(NSURLSessionDataTask *_Nullable task, %s * _Nullable responseObject))success" +
 		"\n\t\tfailure:(nullable void (^)(NSURLSessionDataTask * _Nullable task,   JYNetError *_Nullable error))failure{" +
-		"\n\tparam.action = [self %s];" +
+		"\n\tparam.action = @\"%s\";" +
 		"\n\treturn [self mapi_post:[self moduleApiServer:type] parameters:param repClass:[%s class] progress:uploadProgress success:success failure:failure];" +
 		"\n}"
 
