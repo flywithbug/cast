@@ -27,6 +27,7 @@ func Cache() *CacheModel {
 		ca.Models = make(map[string]string)
 		ca.Apis = make(map[string]string)
 		ca.Lock = sync.RWMutex{}
+		ca.ErrorApi = make(map[int]interface{})
 	}
 	return ca
 }
