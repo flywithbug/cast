@@ -36,7 +36,11 @@ type ObjectiveFileModel struct {
 }
 
 func (ob *ObjectiveFileModel) formatHeader() {
+
 	mName := formatModelName(ob.DataModel.Name)
+	if ob.DataModel.Type == ModelTypeTypeParameter {
+		mName = formatParaName(ob.DataModel.Name)
+	}
 	ob.ModelName = mName
 	now := time.Now().Format("2006-01-02")
 	ob.Header = fmt.Sprintf(header, mName, now)
@@ -99,6 +103,10 @@ func formObjectiveFileModel(model DataModel) *ObjectiveFileModel {
 	obM.NullBEGIN = "NS_ASSUME_NONNULL_BEGIN"
 	obM.NullEnd = "NS_ASSUME_NONNULL_END"
 	obM.Interface = fmt.Sprintf(interF, obM.ModelName)
+
+	if obM.DataModel.Type == ModelTypeTypeParameter {
+		obM.Interface = fmt.Sprintf(interParaF, obM.ModelName)
+	}
 	obM.ImportM = fmt.Sprintf(importStr1, obM.ModelName)
 	obM.Implementation = fmt.Sprintf(implementation, obM.ModelName)
 	obM.formModelContainerProperty()

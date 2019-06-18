@@ -163,3 +163,9 @@ func (a *ObjectiveAPIFileModel) formApiMFileString() {
 
 	a.M = str
 }
+
+func CastApiObjective_C_H_M(model Api) *ObjectiveAPIFileModel {
+	obm := FormObjectiveAPIFileModel(model)
+	obm.formContainerString()
+	return obm
+}

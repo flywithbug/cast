@@ -71,15 +71,25 @@ func makeFiles() {
 	for _, v := range list {
 		makeObcModelFile(v)
 	}
+	makeObcApiFile(api)
+}
 
+func makeObcApiFile(model cast.Api) {
+	obm := cast.CastApiObjective_C_H_M(model)
+	hName := fmt.Sprintf("%s.h", obm.ApiFullName)
+	err := file_manager.WriteFileString(hName, obm.H, true)
+	if err != nil {
+		fmt.Println(err)
+	}
+	mName := fmt.Sprintf("%s.m", obm.ApiFullName)
+	err = file_manager.WriteFileString(mName, obm.M, true)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func makeObcModelFile(model cast.DataModel) {
 	obm := cast.CastModelObjective_C_H_M(model)
-	//fmt.Println(obm.H)
-	//fmt.Println("___________________________")
-	//
-	//fmt.Println(obm.M)
 	hName := fmt.Sprintf("%s.h", obm.ModelName)
 	err := file_manager.WriteFileString(hName, obm.H, true)
 	if err != nil {

@@ -1,5 +1,5 @@
 //
-//  JYRespQueryPara.h
+//  JYParaQueryPara.h
 //  JYCastKit
 //
 //  Created by Flywithbug on 2019-06-18.
@@ -11,7 +11,7 @@
 	
 NS_ASSUME_NONNULL_BEGIN
 	
-@interface JYRespQueryPara : JYResponseModel
+@interface JYParaQueryPara : JYQueryParameter
 @property (nonatomic, copy)  	NSString *cityCode;
 @property (nonatomic, strong)	NSNumber *lng;
 @property (nonatomic, strong)	NSNumber *lat;
