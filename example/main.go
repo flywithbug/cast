@@ -86,7 +86,7 @@ func makeFiles() {
 }
 
 func makeObcApiFile(model cast.Api) {
-	obm := cast.CastApiObjective_C_H_M(model)
+	obm, _ := cast.CastApiObjective_C_H_M(model)
 	hName := fmt.Sprintf("%s.h", obm.ApiFullName)
 	err := file_manager.WriteFileString(hName, obm.H, true)
 	if err != nil {

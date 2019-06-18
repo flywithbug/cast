@@ -38,32 +38,35 @@ type ObjectiveAPIFileModel struct {
 	M          string
 }
 
-func formObjectiveAPIFileModel(aM Api) (apiFileM *ObjectiveAPIFileModel) {
-	apiFileM = new(ObjectiveAPIFileModel)
+func formObjectiveAPIFileModel(aM Api) (apiFileM ObjectiveAPIFileModel, err error) {
+	apiFileM = ObjectiveAPIFileModel{}
 	apiFileM.ContainerModel = make(map[string]string)
 	apiFileM.Api = aM
 	i, ok := Cache().get(aM.ResponseModelName)
 	if !ok {
-		return nil
+		err = fmt.Errorf("model not found:%s", aM.ResponseModelName)
+		return
 	}
 	dM, ok := i.(DataModel)
 	if !ok {
-		return nil
+		err = fmt.Errorf("模型转换失败:%s", aM.ResponseModelName)
+		return
 	}
 	apiFileM.DataModel = dM
 
 	i, ok = Cache().get(aM.ParameterName)
 	if !ok {
-		return nil
+		err = fmt.Errorf("model not found:%s", aM.ParameterName)
+		return
 	}
 	dM, ok = i.(DataModel)
 	if !ok {
-		return nil
+		err = fmt.Errorf("模型转换失败:%s", aM.ParameterName)
+		return
 	}
 	apiFileM.ParaModel = dM
 	apiFileM.formContainerString()
-
-	return apiFileM
+	return
 }
 
 func (a *ObjectiveAPIFileModel) formContainerString() {
@@ -164,6 +167,6 @@ func (a *ObjectiveAPIFileModel) formApiMFileString() {
 	a.M = str
 }
 
-func CastApiObjective_C_H_M(model Api) *ObjectiveAPIFileModel {
+func CastApiObjective_C_H_M(model Api) (apiFileM ObjectiveAPIFileModel, err error) {
 	return formObjectiveAPIFileModel(model)
 }
