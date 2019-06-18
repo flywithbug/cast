@@ -105,7 +105,7 @@ func cast2ObjectiveCFiles(apis []Api, models []DataModel) []ObjectiveCFileModel 
 	for _, v := range apis {
 		obm, err := CastApiObjective_C_H_M(v)
 		if err != nil {
-			fmt.Println(err)
+			Cache().setErrorMap(v.Id, v)
 			continue
 		}
 		obF := ObjectiveCFileModel{

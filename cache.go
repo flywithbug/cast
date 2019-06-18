@@ -7,10 +7,11 @@ import (
 )
 
 type CacheModel struct {
-	Cache  *c.Cache
-	Models map[string]string
-	Apis   map[string]string
-	Lock   sync.RWMutex
+	Cache    *c.Cache
+	Models   map[string]string
+	Apis     map[string]string
+	Lock     sync.RWMutex
+	ErrorApi map[int]interface{}
 }
 
 var ca *CacheModel
@@ -34,6 +35,7 @@ func (ca *CacheModel) flush() {
 	ca.Cache.Flush()
 	ca.Models = make(map[string]string)
 	ca.Apis = make(map[string]string)
+	ca.ErrorApi = make(map[int]interface{})
 }
 
 func (ca *CacheModel) exist(key string) bool {
@@ -67,4 +69,12 @@ func (ca *CacheModel) delete(Key string) {
 
 func (ca *CacheModel) allItems() map[string]c.Item {
 	return ca.Cache.Items()
+}
+
+func (ca *CacheModel) setErrorMap(key int, value interface{}) {
+	ca.ErrorApi[key] = value
+}
+
+func (ca *CacheModel) get(key string) (interface{}, bool) {
+	return ca.Cache.Get(key)
 }
