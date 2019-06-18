@@ -2,7 +2,7 @@
 //  JYRespGetBikesByLocationBikes.h
 //  JYCastKit
 //
-//  Created by Flywithbug on 2019-06-17.
+//  Created by Flywithbug on 2019-06-18.
 //  Copyright © 2019 hellobike. All rights reserved.
 //
 	

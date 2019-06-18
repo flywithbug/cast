@@ -1,18 +1,18 @@
 //
-//  JYRespGetBikesByLocationBikes.h
+//  JYRespQueryPara.h
 //  JYCastKit
 //
 //  Created by Flywithbug on 2019-06-18.
 //  Copyright © 2019 hellobike. All rights reserved.
 //
 	
-#import "JYRespGetBikesByLocationBikes.h"
+#import "JYRespQueryPara.h"
 	
-@implementation JYRespGetBikesByLocationBikes
+@implementation JYRespQueryPara
 	
 + (NSDictionary *)modelContainerPropertyGenericClass {
 	// value should be Class or Class name.
-	return @{@"list" : [JYRespGetBikesByLocation class]};
+	return @{};
 }
 @end
 	

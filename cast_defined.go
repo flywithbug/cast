@@ -26,14 +26,25 @@ var (
 	arrayProperty     = "@property (nonatomic, copy)  \tNSArray <%s *> *%s;"
 	containerProperty = "@\"%s\" : [%s class]"
 
-	categoryName      = "JYMapiNetworkClient+%s" //.h.m
-	categoryInterface = "@interface JYMapiNetworkClient (%s)"
+	//categoryName      = "JYMapiNetworkClient+%s" //.h.m
+	//categoryInterface = "@interface JYMapiNetworkClient (%s)"
 
 	categoryMethod = "- (nullable NSURLSessionDataTask *)mapi_%s_withmoduleType:(JYModuleType)type" +
-		"\n\tpara:(%s * _Nullable)param" +
-		"\n\tprogress:(nullable void (^)(NSProgress *_Nonnull  uploadProgress))uploadProgress" +
-		"\n\tsuccess:(nullable void (^)(NSURLSessionDataTask *_Nullable task, %s * _Nullable responseObject))success" +
-		"\n\tfailure:(nullable void (^)(NSURLSessionDataTask * _Nullable task,   JYNetError *_Nullable error))failure;"
+		"\n\t\tpara:(%s * _Nullable)param" +
+		"\n\t\tprogress:(nullable void (^)(NSProgress *_Nonnull  uploadProgress))uploadProgress" +
+		"\n\t\tsuccess:(nullable void (^)(NSURLSessionDataTask *_Nullable task, %s * _Nullable responseObject))success" +
+		"\n\t\tfailure:(nullable void (^)(NSURLSessionDataTask * _Nullable task,   JYNetError *_Nullable error))failure;"
+
+	categoryImpMethod = "- (nullable NSURLSessionDataTask *)mapi_%s_withmoduleType:(JYModuleType)type" +
+		"\n\t\tpara:(%s * _Nullable)param" +
+		"\n\t\tprogress:(nullable void (^)(NSProgress *_Nonnull  uploadProgress))uploadProgress" +
+		"\n\t\tsuccess:(nullable void (^)(NSURLSessionDataTask *_Nullable task, %s * _Nullable responseObject))success" +
+		"\n\t\tfailure:(nullable void (^)(NSURLSessionDataTask * _Nullable task,   JYNetError *_Nullable error))failure{" +
+		"\n\tparam.action = [self action];" +
+		"\n\treturn [self mapi_post:[self moduleApiServer:type] parameters:param repClass:[%s class] progress:uploadProgress success:success failure:failure];" +
+		"\n}"
+
+	apiAction = "- (NSString *)action{\n\treturn @\"%s\";\n}"
 )
 
 //模型名称生产
