@@ -99,3 +99,16 @@ func capitalize(str string) string {
 	}
 	return string(strArry)
 }
+
+func formatDefaultClass(typeee string) string {
+	switch strings.ToLower(typeee) {
+	case "string":
+		return "NSString"
+	case "bool", "boolean":
+		return "NSNumber"
+	case "number", "float":
+		return "NSNumber"
+
+	}
+	return typeee
+}
