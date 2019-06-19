@@ -30,7 +30,7 @@ const (
  */
 type Attribute struct {
 	Name      string `json:"name"`       //属性名
-	ModelName string `json:"model_name"` //属性type 为Array数组元素类型
+	ModelName string `json:"model_name"` //属性type 为Array数组元素类型 //为string boolean 之类默认类型时，没有子模型
 	Type      string `json:"type"`       //属性类型
 	Alias     string `json:"alias"`      //别名：Json 捏取值Key
 	Hash      string `json:"hash"`       //Hash key
@@ -96,4 +96,12 @@ func (d DataModel) Valid() bool {
 		return false
 	}
 	return true
+}
+
+func IsDefaultType(typeS string) bool {
+	switch typeS {
+	case "string", "float", "number", "integer", "boolean", "array", "object":
+		return true
+	}
+	return false
 }
