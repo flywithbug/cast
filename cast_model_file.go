@@ -80,14 +80,10 @@ func (ob *ObjectiveModelFileModel) formatAttributesAndImport() {
 			str += "\n"
 			containerModel[mName] = v.Name
 		case "array":
-			if IsDefaultType(v.ModelName) {
-				mName := formatDefaultClass(v.ModelName)
-				str += fmt.Sprintf(arrayProperty, mName, v.Name)
-				str += "\n"
-			} else {
-				mName := formatModelName(v.ModelName)
-				str += fmt.Sprintf(arrayProperty, mName, v.Name)
-				str += "\n"
+			mName := formatModelName(v.ModelName)
+			str += fmt.Sprintf(arrayProperty, mName, v.Name)
+			str += "\n"
+			if !IsDefaultType(v.ModelName) {
 				containerModel[mName] = v.Name
 			}
 		}

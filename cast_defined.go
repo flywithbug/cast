@@ -49,6 +49,9 @@ var (
 
 //模型名称生产
 func formatModelName(name string) string {
+	if IsDefaultType(name) {
+		return formatDefaultClass(name)
+	}
 	return fmt.Sprintf("JYResp%s", name)
 }
 
