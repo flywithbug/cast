@@ -100,7 +100,7 @@ func (d DataModel) Valid() bool {
 
 func IsDefaultType(typeS string) bool {
 	switch typeS {
-	case "string", "float", "number", "integer", "boolean", "array", "object":
+	case "string", "float", "number", "integer", "boolean":
 		return true
 	}
 	return false
