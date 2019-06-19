@@ -47,6 +47,7 @@ func (ob *ObjectiveModelFileModel) formModelContainerProperty() {
 	str := "+ (NSDictionary *)modelContainerPropertyGenericClass {\n\t// value should be Class or Class name.\n"
 	str += "\treturn @{"
 	for k, v := range ob.ContainerModel {
+
 		str += fmt.Sprintf(containerProperty, v, k)
 		str += ","
 	}
@@ -83,7 +84,6 @@ func (ob *ObjectiveModelFileModel) formatAttributesAndImport() {
 				mName := formatDefaultClass(v.ModelName)
 				str += fmt.Sprintf(arrayProperty, mName, v.Name)
 				str += "\n"
-				containerModel[mName] = v.Name
 			} else {
 				mName := formatModelName(v.ModelName)
 				str += fmt.Sprintf(arrayProperty, mName, v.Name)
