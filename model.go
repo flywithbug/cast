@@ -3,6 +3,7 @@ package cast
 import (
 	"encoding/json"
 	"sort"
+	"strings"
 )
 
 const (
@@ -99,7 +100,7 @@ func (d DataModel) Valid() bool {
 }
 
 func IsDefaultType(typeS string) bool {
-	switch typeS {
+	switch strings.ToLower(typeS) {
 	case "string", "float", "number", "integer", "boolean":
 		return true
 	}
