@@ -40,6 +40,7 @@ func (ob *ObjectiveModelFileModel) formatHeader() {
 		mName = formatParaName(ob.DataModel.Name)
 	}
 	ob.Header = fmt.Sprintf(header, mName)
+	ob.ModelName = mName
 }
 
 func (ob *ObjectiveModelFileModel) formModelContainerProperty() {
