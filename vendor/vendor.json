@@ -9,6 +9,12 @@
 			"revisionTime": "2019-06-15T11:10:17Z"
 		},
 		{
+			"checksumSHA1": "ZT5M6bVpGdAOrGrsU2dhVEW2A+g=",
+			"path": "github.com/flywithbug/file_manager",
+			"revision": "4864ba171b7efc9c32e0a41ade5808070b403d71",
+			"revisionTime": "2019-06-19T08:25:43Z"
+		},
+		{
 			"checksumSHA1": "9XXP1h9B2FlbAhm2tBLrc/pFW2s=",
 			"path": "github.com/flywithbug/utils",
 			"revision": "51167c4a336885fd8fb89354c4fcd4610cf2d6ad",

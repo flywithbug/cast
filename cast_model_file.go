@@ -83,9 +83,8 @@ func (ob *ObjectiveModelFileModel) formatAttributesAndImport() {
 			mName := formatModelName(v.ModelName)
 			str += fmt.Sprintf(arrayProperty, mName, v.Name)
 			str += "\n"
-			if !IsDefaultType(v.ModelName) {
-				containerModel[mName] = v.Name
-			}
+			containerModel[mName] = v.Name
+
 		}
 	}
 	ob.Attribute = str
