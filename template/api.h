@@ -1,10 +1,10 @@
 #import <JYCastKit/JYCastKit.h>
-
-{*para*}
+#import "{*para*}.h"
+#import "{*para*}.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface {*para*}
+@interface JYMapiNetworkClient ({*para*})
 - (nullable NSURLSessionDataTask *)mapi_{*para*}_withModuleType:(JYModuleType)type
 		para:({*para*} * _Nullable)param
 		progress:(nullable void (^)(NSProgress *_Nonnull  uploadProgress))uploadProgress

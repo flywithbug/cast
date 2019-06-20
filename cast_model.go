@@ -14,7 +14,7 @@ func castObjectiveModelFile(model DataModel) *FileModelCast {
 	fi.H = fmt.Sprintf(temp.ModelH, im, model.Name, model.ParentName, a)
 	fi.M = fmt.Sprintf(temp.ModelM, model.Name, model.Name, con)
 	fi.Name = model.Name
-	fi.Type = model.Type
+	fi.Type = "model"
 	fi.Md5 = utils.Md5(fi.H + fi.M)
 	return fi
 }
