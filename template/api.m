@@ -1,4 +1,4 @@
-{*para*}
+#import "{*para*}.h"
 
 @implementation {*para*}
 - (nullable NSURLSessionDataTask *)mapi_{*para*}_withModuleType:(JYModuleType)type

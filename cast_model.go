@@ -2,7 +2,10 @@ package cast
 
 import (
 	"fmt"
+
 	"strings"
+
+	"github.com/flywithbug/utils"
 )
 
 func castObjectiveModelFile(model DataModel) *FileModelCast {
@@ -10,6 +13,9 @@ func castObjectiveModelFile(model DataModel) *FileModelCast {
 	a, im, con := attributesFormat(model.Attributes)
 	fi.H = fmt.Sprintf(temp.ModelH, im, model.Name, model.ParentName, a)
 	fi.M = fmt.Sprintf(temp.ModelM, model.Name, model.Name, con)
+	fi.Name = model.Name
+	fi.Type = model.Type
+	fi.Md5 = utils.Md5(fi.H + fi.M)
 	return fi
 }
 

@@ -16,6 +16,12 @@ func TestCastObjectiveModelFile(t *testing.T) {
 		Type:     "integer",
 		Required: true,
 	}
+	a22 := Attribute{
+		Name:      "features",
+		Type:      "array",
+		ModelName: "string",
+		Required:  true,
+	}
 
 	a3 := Attribute{
 		Name:      "list",
@@ -42,7 +48,7 @@ func TestCastObjectiveModelFile(t *testing.T) {
 		Type:       "Model",
 		ParentName: "JYResponseModel",
 		Attributes: []Attribute{
-			a1, a2, a3,
+			a1, a2, a3, a22,
 		},
 	}
 	md1 := DataModel{
@@ -53,14 +59,17 @@ func TestCastObjectiveModelFile(t *testing.T) {
 			a1, a2, a4, a5,
 		},
 	}
-	fmt.Println(castObjectiveModelFile(md).H)
+
+	fi1 := castObjectiveModelFile(md)
+	fi2 := castObjectiveModelFile(md1)
+	fmt.Println(fi1.H)
 	fmt.Println("--------------------------------------------------------------------------------")
-	fmt.Println(castObjectiveModelFile(md).M)
+	fmt.Println(fi1.M)
 	fmt.Println("--------------------------------------------------------------------------------")
 
-	fmt.Println(castObjectiveModelFile(md1).H)
+	fmt.Println(fi2.H)
 	fmt.Println("--------------------------------------------------------------------------------")
-	fmt.Println(castObjectiveModelFile(md1).M)
+	fmt.Println(fi2.M)
 
 }
 

@@ -19,6 +19,18 @@
 			"path": "github.com/flywithbug/utils",
 			"revision": "51167c4a336885fd8fb89354c4fcd4610cf2d6ad",
 			"revisionTime": "2017-11-08T11:17:52Z"
+		},
+		{
+			"checksumSHA1": "zmC8/3V4ls53DJlNTKDZwPSC/dA=",
+			"path": "github.com/satori/go.uuid",
+			"revision": "5bf94b69c6b68ee1b541973bb8e1144db23a194b",
+			"revisionTime": "2017-03-21T23:07:31Z"
+		},
+		{
+			"checksumSHA1": "F6Hxr7TkLwpQQ/HjapsfAJwVLtA=",
+			"path": "im_api/module/util",
+			"revision": "9cc55725be1d14397a7b4a2aac5c54eaf6ca6ca5",
+			"revisionTime": "2019-03-08T02:19:01Z"
 		}
 	],
 	"rootPath": "github.com/flywithbug/cast"

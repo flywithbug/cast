@@ -1,3 +1,5 @@
+#import <JYCastKit/JYCastKit.h>
+
 {*para*}
 
 NS_ASSUME_NONNULL_BEGIN

@@ -2,15 +2,15 @@ package cast
 
 //Api模型
 type API struct {
-	Id            int
-	Name          string
-	Action        string
-	Path          string
-	Method        string
-	Alias         string //别名(中文名)
-	Notes         string
-	ParameterId   int    //参数模型Id
-	ResponseId    int    //返回模型Id
+	Id     int
+	Name   string
+	Action string
+	Path   string
+	Method string
+	Alias  string //别名(中文名)
+	Notes  string
+	//ParameterId   int    //参数模型Id
+	//ResponseId    int    //返回模型Id
 	ParameterName string //参数模型名字
 	ResponseName  string //返回体模型名字
 	Status        string //接口状态
@@ -19,6 +19,7 @@ type API struct {
 	UpDateTime    int
 	NoResponse    bool
 	NoParameter   bool
+	CategoryClass string
 }
 
 //数据模型
