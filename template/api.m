@@ -1,6 +1,8 @@
 #import "JYMapiNetworkClient+{*para*}.h"
 
-@implementation {*para*}
+
+@implementation JYMapiNetworkClient ({*para*})
+
 - (nullable NSURLSessionDataTask *)mapi_{*para*}_withModuleType:(JYModuleType)type
 		para:({*para*} * _Nullable)param
 		progress:(nullable void (^)(NSProgress *_Nonnull  uploadProgress))uploadProgress

@@ -11,8 +11,11 @@ type API struct {
 	Notes  string
 	//ParameterId   int    //参数模型Id
 	//ResponseId    int    //返回模型Id
-	ParameterName string //参数模型名字
-	ResponseName  string //返回体模型名字
+	ParameterName  string //参数模型名字
+	ResponseName   string //返回体模型名字
+	ParaOriginName string
+	RespOriginName string
+
 	Status        string //接口状态
 	Author        string //创建人
 	AddTime       int
