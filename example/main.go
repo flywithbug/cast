@@ -3,15 +3,15 @@ package main
 import (
 	"fmt"
 
-	"github.com/flywithbug/cast"
+	cast2 "github.com/flywithbug/cast/cast"
 	"github.com/flywithbug/file_manager"
 )
 
-func makeDaModel() cast.DataModel {
-	model0 := cast.DataModel{
+func makeDaModel() cast2.DataModel {
+	model0 := cast2.DataModel{
 		Name: "GetBikesByLocation",
-		Type: cast.ModelTypeTypeModel,
-		Attributes: []cast.Attribute{
+		Type: cast2.ModelTypeTypeModel,
+		Attributes: []cast2.Attribute{
 			{Name: "cityCode", Type: "string", Notes: "城市码"},
 			{Name: "lng", Type: "number", Notes: "经度"},
 			{Name: "lat", Type: "number", Notes: "纬度"},
@@ -19,10 +19,10 @@ func makeDaModel() cast.DataModel {
 			{Name: "redPacketModel", Type: "boolean", Notes: "是否红包车"},
 		},
 	}
-	model := cast.DataModel{
+	model := cast2.DataModel{
 		Name: "GetBikesByLocationBikes",
-		Type: cast.ModelTypeTypeModel,
-		Attributes: []cast.Attribute{
+		Type: cast2.ModelTypeTypeModel,
+		Attributes: []cast2.Attribute{
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
 			{Name: "bikeNo2", Type: "int", Notes: "车辆编号"},
 			{Name: "lng", Type: "number", Notes: "经度"},
@@ -37,7 +37,7 @@ func makeDaModel() cast.DataModel {
 	return model
 }
 func oldMakeObcFilllllll() {
-	obm := cast.CastModelObjective_C_H_M(makeDaModel())
+	obm := cast2.CastModelObjective_C_H_M(makeDaModel())
 	fmt.Println(obm.H)
 	fmt.Println("___________________________")
 
@@ -66,7 +66,7 @@ func castFiles() {
 func makeFiles() {
 	api := makeTestApi1()
 	list := makeModelList1()
-	_, err := cast.Cast([]cast.Api{api}, list)
+	_, err := cast2.Cast([]cast2.Api{api}, list)
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -79,8 +79,8 @@ func makeFiles() {
 	makeObcApiFile(api)
 }
 
-func makeObcApiFile(model cast.Api) {
-	obm, _ := cast.CastApiObjective_C_H_M(model)
+func makeObcApiFile(model cast2.Api) {
+	obm, _ := cast2.CastApiObjective_C_H_M(model)
 	hName := fmt.Sprintf("%s.h", obm.ApiFullName)
 	err := file_manager.WriteFileString(hName, obm.H, true)
 	if err != nil {
@@ -93,8 +93,8 @@ func makeObcApiFile(model cast.Api) {
 	}
 }
 
-func makeObcModelFile(model cast.DataModel) {
-	obm := cast.CastModelObjective_C_H_M(model)
+func makeObcModelFile(model cast2.DataModel) {
+	obm := cast2.CastModelObjective_C_H_M(model)
 	hName := fmt.Sprintf("%s.h", obm.ModelName)
 	err := file_manager.WriteFileString(hName, obm.H, true)
 	if err != nil {
@@ -107,11 +107,11 @@ func makeObcModelFile(model cast.DataModel) {
 	}
 }
 
-func makeModelList1() []cast.DataModel {
-	model0 := cast.DataModel{
+func makeModelList1() []cast2.DataModel {
+	model0 := cast2.DataModel{
 		Name: "GetBikesByLocation",
-		Type: cast.ModelTypeTypeModel,
-		Attributes: []cast.Attribute{
+		Type: cast2.ModelTypeTypeModel,
+		Attributes: []cast2.Attribute{
 			{Name: "cityCode", Type: "string", Notes: "城市码"},
 			{Name: "lng", Type: "number", Notes: "经度"},
 			{Name: "lat", Type: "number", Notes: "纬度"},
@@ -119,10 +119,10 @@ func makeModelList1() []cast.DataModel {
 			{Name: "redPacketModel", Type: "boolean", Notes: "是否红包车"},
 		},
 	}
-	model := cast.DataModel{
+	model := cast2.DataModel{
 		Name: "GetBikesByLocationBikes",
-		Type: cast.ModelTypeTypeModel,
-		Attributes: []cast.Attribute{
+		Type: cast2.ModelTypeTypeModel,
+		Attributes: []cast2.Attribute{
 			{Name: "bikeNo", Type: "string", Notes: "车辆编号"},
 			{Name: "bikeNo2", Type: "int", Notes: "车辆编号"},
 			{Name: "lng", Type: "number", Notes: "经度"},
@@ -134,10 +134,10 @@ func makeModelList1() []cast.DataModel {
 				ModelName: "GetBikesByLocation"},
 		},
 	}
-	model1 := cast.DataModel{
+	model1 := cast2.DataModel{
 		Name: "QueryPara",
-		Type: cast.ModelTypeTypeParameter,
-		Attributes: []cast.Attribute{
+		Type: cast2.ModelTypeTypeParameter,
+		Attributes: []cast2.Attribute{
 			{Name: "cityCode", Type: "string", Notes: "城市码"},
 			{Name: "lng", Type: "number", Notes: "经度"},
 			{Name: "lat", Type: "number", Notes: "纬度"},
@@ -146,24 +146,24 @@ func makeModelList1() []cast.DataModel {
 		},
 	}
 
-	list := make([]cast.DataModel, 0)
+	list := make([]cast2.DataModel, 0)
 	list = append(list, model0, model, model1)
 	return list
 }
 
-func makeTestApi1() cast.Api {
-	api := cast.Api{
+func makeTestApi1() cast2.Api {
+	api := cast2.Api{
 		Id:                993,
 		Name:              "user.ev.ride.getBikesByLoction",
 		Action:            "user.ev.ride.getBikesByLoction",
 		Alias:             "获取附近电动车",
 		Notes:             "根据位置获取附近电动车，目前获取附近500m内的200辆以内车辆",
-		Method:            cast.ApiMethodTypePOST,
+		Method:            cast2.ApiMethodTypePOST,
 		Path:              "/api",
 		Author:            "小哈",
 		AddTime:           1531222996,
 		UpDateTime:        1558078875,
-		Status:            cast.APIStatusTypeDone,
+		Status:            cast2.APIStatusTypeDone,
 		ParameterName:     "QueryPara",
 		ResponseModelName: "GetBikesByLocationBikes",
 	}
