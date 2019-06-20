@@ -8,8 +8,8 @@ import (
 	"github.com/flywithbug/utils"
 )
 
-func castObjectiveModelFile(model DataModel) *FileModelCast {
-	fi := new(FileModelCast)
+func castObjectiveModelFile(model DataModel) FileModelCast {
+	fi := FileModelCast{}
 	a, im, con := attributesFormat(model.Attributes)
 	fi.H = fmt.Sprintf(temp.ModelH, im, model.Name, model.ParentName, a)
 	fi.M = fmt.Sprintf(temp.ModelM, model.Name, model.Name, con)

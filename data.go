@@ -224,9 +224,9 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"template/api.h":   templateApiH,
-	"template/api.m":   templateApiM,
-	"template/const":   templateConst,
+	"template/api.h": templateApiH,
+	"template/api.m": templateApiM,
+	"template/const": templateConst,
 	"template/model.h": templateModelH,
 	"template/model.m": templateModelM,
 }
@@ -270,12 +270,11 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
-
 var _bintree = &bintree{nil, map[string]*bintree{
 	"template": &bintree{nil, map[string]*bintree{
-		"api.h":   &bintree{templateApiH, map[string]*bintree{}},
-		"api.m":   &bintree{templateApiM, map[string]*bintree{}},
-		"const":   &bintree{templateConst, map[string]*bintree{}},
+		"api.h": &bintree{templateApiH, map[string]*bintree{}},
+		"api.m": &bintree{templateApiM, map[string]*bintree{}},
+		"const": &bintree{templateConst, map[string]*bintree{}},
 		"model.h": &bintree{templateModelH, map[string]*bintree{}},
 		"model.m": &bintree{templateModelM, map[string]*bintree{}},
 	}},
@@ -327,3 +326,4 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
+
