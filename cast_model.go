@@ -23,14 +23,20 @@ func attributesFormat(list []Attribute) (string, string, string) {
 	str := ""
 	impStr := ""
 	containerStr := ""
+	impMap := make(map[string]bool)
 	for _, v := range list {
 		str += attributeProperty(v.Name, v.Type, v.ModelName)
 		str += "\n"
 		if !defaultClassType(v.Type, v.ModelName) {
-			impStr += fmt.Sprintf("#import \"%s.h\"", v.ModelName)
-			impStr += "\n"
-			containerStr += fmt.Sprintf("@\"%s\" : [%s class],\n", v.Name, v.ModelName)
+			impMap[v.ModelName] = true
+			if v.Type == "array" {
+				containerStr += fmt.Sprintf("@\"%s\" : [%s class],\n", v.Name, v.ModelName)
+			}
 		}
+	}
+	for v := range impMap {
+		impStr += fmt.Sprintf("#import \"%s.h\"", v)
+		impStr += "\n"
 	}
 	containerStr = strings.ReplaceAll(containerStr, "\n", "")
 	return str, impStr, containerStr

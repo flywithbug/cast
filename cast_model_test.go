@@ -32,19 +32,20 @@ func TestCastObjectiveModelFile(t *testing.T) {
 
 	a4 := Attribute{
 		Name:      "people",
-		ModelName: "People",
+		ModelName: "JYRespPeople",
 		Type:      "object",
 		Required:  true,
 	}
 
 	a5 := Attribute{
 		Name:      "list",
-		ModelName: "People",
+		ModelName: "JYRespPeople",
 		Type:      "array",
 		Required:  true,
 	}
 	md := DataModel{
-		Name:       "People",
+		OriginName: "people",
+		Name:       "JYRespPeople",
 		Type:       "Model",
 		ParentName: "JYResponseModel",
 		Attributes: []Attribute{
@@ -52,7 +53,8 @@ func TestCastObjectiveModelFile(t *testing.T) {
 		},
 	}
 	md1 := DataModel{
-		Name:       "People1",
+		OriginName: "people1",
+		Name:       "JYRespPeople1",
 		Type:       "Model",
 		ParentName: "JYResponseModel",
 		Attributes: []Attribute{

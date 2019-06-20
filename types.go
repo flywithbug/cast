@@ -24,7 +24,8 @@ type API struct {
 
 //数据模型
 type DataModel struct {
-	Name       string
+	Name       string //添加前缀后的名字
+	OriginName string //原始名字 for java
 	Type       string //Model Parameter
 	Alias      string //后续使用
 	Desc       string //模型描述
