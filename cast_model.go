@@ -25,6 +25,9 @@ func attributesFormat(list []Attribute) (string, string, string) {
 	containerStr := ""
 	impMap := make(map[string]bool)
 	for _, v := range list {
+		if v.FatherAtt {
+			continue
+		}
 		str += attributeProperty(v.Name, v.Type, v.ModelName)
 		str += "\n"
 		if !defaultClassType(v.Type, v.ModelName) {

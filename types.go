@@ -46,6 +46,7 @@ type Attribute struct {
 	Required  bool
 	Default   string
 	Notes     string
+	FatherAtt bool //父类中是否已存在（针对iOS中）
 }
 
 type FileModelCast struct {
