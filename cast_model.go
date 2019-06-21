@@ -35,8 +35,10 @@ func attributesFormat(list []Attribute) (string, string, string) {
 		}
 	}
 	for v := range impMap {
-		impStr += fmt.Sprintf("#import \"%s.h\"", v)
-		impStr += "\n"
+		if !IsDefaultType(v) {
+			impStr += fmt.Sprintf("#import \"%s.h\"", v)
+			impStr += "\n"
+		}
 	}
 	containerStr = strings.ReplaceAll(containerStr, "\n", "")
 	return str, impStr, containerStr
@@ -77,10 +79,22 @@ func defaultClassType(Type, modelName string) bool {
 	switch strings.ToLower(Type) {
 	case "string", "bool", "boolean", "number", "float", "integer":
 		return true
+	case "nsstring", "nsnumber", "nsinteger":
+		return true
 	case "array":
 		if modelName != "" {
 			return defaultClassType(modelName, "")
 		}
+	}
+	return false
+}
+
+func defalutClassKitType(Type string) bool {
+	switch strings.ToLower(Type) {
+	case "string", "bool", "boolean", "number", "float", "integer":
+		return true
+	case "nsstring", "nsnumber", "nsinteger", "nsarray":
+		return true
 	}
 	return false
 }

@@ -117,6 +117,9 @@ func getDataModel(key string) (DataModel, bool) {
 }
 
 func IsDefaultType(typeS string) bool {
+	if typeS == "" {
+		return true
+	}
 	switch strings.ToLower(typeS) {
 	case "string", "float", "number", "integer", "boolean":
 		return true

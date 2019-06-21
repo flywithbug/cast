@@ -19,7 +19,7 @@ func TestCastObjectiveModelFile(t *testing.T) {
 	a22 := Attribute{
 		Name:      "features",
 		Type:      "array",
-		ModelName: "string",
+		ModelName: "integer",
 		Required:  true,
 	}
 
