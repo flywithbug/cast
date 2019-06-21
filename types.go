@@ -55,4 +55,8 @@ type FileModelCast struct {
 	Name string //文件名
 	Type string //model api
 	Md5  string
+
+	//.m文件聚合时使用
+	MContent string
+	MImport  string
 }
