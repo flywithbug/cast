@@ -87,7 +87,7 @@ func defaultClassType(Type, modelName string) bool {
 	switch strings.ToLower(Type) {
 	case "string", "bool", "boolean", "number", "float", "integer":
 		return true
-	case "nsstring", "nsnumber", "nsinteger":
+	case "nsstring", "nsnumber":
 		return true
 	case "array":
 		if modelName != "" {
@@ -97,12 +97,12 @@ func defaultClassType(Type, modelName string) bool {
 	return false
 }
 
-func defalutClassKitType(Type string) bool {
-	switch strings.ToLower(Type) {
-	case "string", "bool", "boolean", "number", "float", "integer":
-		return true
-	case "nsstring", "nsnumber", "nsinteger", "nsarray":
-		return true
-	}
-	return false
-}
+//func defalutClassKitType(Type string) bool {
+//	switch strings.ToLower(Type) {
+//	case "string", "bool", "boolean", "number", "float", "integer":
+//		return true
+//	case "nsstring", "nsnumber", "nsinteger", "nsarray":
+//		return true
+//	}
+//	return false
+//}
