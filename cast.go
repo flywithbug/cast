@@ -120,6 +120,8 @@ func IsDefaultType(typeS string) bool {
 	switch strings.ToLower(typeS) {
 	case "string", "float", "number", "integer", "boolean":
 		return true
+	case "nsstring", "nsuumber", "nsinteger", "bool":
+		return true
 	}
 	return false
 }
