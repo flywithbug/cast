@@ -9,7 +9,7 @@ import (
 type CacheModel struct {
 	Cache    *c.Cache
 	Models   map[string]bool
-	Apis     map[string]bool
+	Apis     map[int]bool
 	Lock     sync.RWMutex
 	ErrorApi map[int]interface{}
 }
@@ -25,7 +25,7 @@ func Cache() *CacheModel {
 		ca = new(CacheModel)
 		ca.Cache = c.New(c.DefaultExpiration, c.DefaultExpiration)
 		ca.Models = make(map[string]bool)
-		ca.Apis = make(map[string]bool)
+		ca.Apis = make(map[int]bool)
 		ca.Lock = sync.RWMutex{}
 		ca.ErrorApi = make(map[int]interface{})
 	}
@@ -35,7 +35,7 @@ func Cache() *CacheModel {
 func (ca *CacheModel) flush() {
 	ca.Cache.Flush()
 	ca.Models = make(map[string]bool)
-	ca.Apis = make(map[string]bool)
+	ca.Apis = make(map[int]bool)
 	ca.ErrorApi = make(map[int]interface{})
 }
 
@@ -44,7 +44,7 @@ func (ca *CacheModel) exist(key string) bool {
 	return b
 }
 
-func (ca *CacheModel) setApi(key string) {
+func (ca *CacheModel) setApi(key int) {
 	ca.Lock.Lock()
 	ca.Apis[key] = true
 	ca.Lock.Unlock()
@@ -55,7 +55,7 @@ func (ca *CacheModel) setModel(key string) {
 	ca.Models[key] = true
 	ca.Lock.Unlock()
 }
-func (ca *CacheModel) isApiExist(key string) bool {
+func (ca *CacheModel) isApiExist(key int) bool {
 	_, ok := ca.Apis[key]
 	return ok
 }

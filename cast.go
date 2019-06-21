@@ -19,12 +19,16 @@ func addModel(model DataModel) error {
 }
 
 func addApi(api API) error {
-	if Cache().isApiExist(api.Name) {
+	if Cache().isApiExist(api.Id) {
 		return fmt.Errorf("model:%s e", api.Name)
 	}
-	Cache().setApi(api.Name)
-	Cache().set(api.Name, api)
+	Cache().setApi(api.Id)
+	Cache().set(apiKey(api.Id), api)
 	return nil
+}
+
+func apiKey(id int) string {
+	return fmt.Sprintf("id:%d", id)
 }
 
 func Cast(apis []API, models []DataModel) ([]FileModelCast, error) {
@@ -51,6 +55,9 @@ func cast2FileModel(apis []API, models []DataModel) []FileModelCast {
 func Valid(apis []API, models []DataModel) error {
 	Cache().flush()
 	for _, a := range apis {
+		if Cache().isApiExist(a.Id) {
+
+		}
 		addApi(a)
 	}
 	for _, a := range models {
@@ -59,7 +66,7 @@ func Valid(apis []API, models []DataModel) error {
 	for k := range Cache().Apis {
 		a, ok := getApi(k)
 		if !ok {
-			return fmt.Errorf("api:%s not exist", k)
+			return fmt.Errorf("apiId:%d not exist", k)
 		}
 		if !a.NoParameter && !Cache().isModelExist(a.ParameterName) {
 			return fmt.Errorf("action:%s,Para:%s", a.Action, a.ParameterName)
@@ -89,8 +96,8 @@ func Valid(apis []API, models []DataModel) error {
 	return nil
 }
 
-func getApi(key string) (API, bool) {
-	i, b := ca.Cache.Get(key)
+func getApi(id int) (API, bool) {
+	i, b := ca.Cache.Get(apiKey(id))
 	if b {
 		if a, ok := i.(API); ok {
 			return a, ok
