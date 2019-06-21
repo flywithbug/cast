@@ -2,17 +2,18 @@ package cast
 
 //Api模型
 type API struct {
-	Id             int
-	Name           string //
-	Action         string //有可能重复
-	Path           string
-	Method         string
-	Alias          string //别名(中文名)
-	Notes          string
-	ParameterName  string //参数模型名字
-	ResponseName   string //返回体模型名字
-	ParaOriginName string
-	RespOriginName string
+	Id            int
+	Title         string
+	Name          string //api名字，独一无二
+	Action        string //有可能重复
+	Path          string
+	Method        string
+	Alias         string //别名(中文名)
+	Notes         string
+	ParameterName string //参数模型名字
+	ResponseName  string //返回体模型名字
+	//ParaOriginName string
+	//RespOriginName string
 
 	Status        string //接口状态
 	Author        string //创建人
@@ -25,14 +26,15 @@ type API struct {
 
 //数据模型
 type DataModel struct {
-	Id         int    //对于的ApiId
-	Name       string //添加前缀后的名字
-	OriginName string //原始名字 for java
-	Type       string //Model Parameter
+	Id   int    //对于的ApiId
+	Name string //添加前缀后的名字
+	//OriginName string //原始名字 for java
+	Type       string //model parameter
 	Alias      string //后续使用
 	Desc       string //模型描述
 	ParentName string //父类名称
 	Attributes []Attribute
+	OriginType string
 }
 
 //数据属性模型
