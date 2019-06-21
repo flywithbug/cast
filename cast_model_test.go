@@ -44,7 +44,7 @@ func TestCastObjectiveModelFile(t *testing.T) {
 		Required:  true,
 	}
 	md := DataModel{
-		OriginName: "people",
+		//OriginName: "people",
 		Name:       "JYRespPeople",
 		Type:       "Model",
 		ParentName: "JYResponseModel",
@@ -53,7 +53,7 @@ func TestCastObjectiveModelFile(t *testing.T) {
 		},
 	}
 	md1 := DataModel{
-		OriginName: "people1",
+		//OriginName: "people1",
 		Name:       "JYRespPeople1",
 		Type:       "Model",
 		ParentName: "JYResponseModel",

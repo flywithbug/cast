@@ -65,22 +65,22 @@ func CastModelFile() {
 	}
 
 	api := cast.API{
-		Id:             100,
-		Name:           "checkBlackUser",
-		Action:         "user.ev.checkBlackUser",
-		Method:         "post",
-		Path:           "api/",
-		ParameterName:  "JYParaPeople",
-		ResponseName:   "JYRespPeopleData",
-		ParaOriginName: "CheckBlackUser",
-		RespOriginName: "CheckBlackUser",
-		NoResponse:     false,
-		NoParameter:    false,
-		CategoryClass:  "JYMapiNetworkClient",
-		AddTime:        1561013457,
-		UpDateTime:     1561013457,
-		Author:         "me",
-		Status:         "done",
+		Id:            100,
+		Name:          "checkBlackUser",
+		Action:        "user.ev.checkBlackUser",
+		Method:        "post",
+		Path:          "api/",
+		ParameterName: "JYParaPeople",
+		ResponseName:  "JYRespPeopleData",
+		//ParaOriginName: "CheckBlackUser",
+		//RespOriginName: "CheckBlackUser",
+		NoResponse:    false,
+		NoParameter:   false,
+		CategoryClass: "JYMapiNetworkClient",
+		AddTime:       1561013457,
+		UpDateTime:    1561013457,
+		Author:        "me",
+		Status:        "done",
 	}
 	list, err := cast.Cast([]cast.API{api}, []cast.DataModel{md, md1})
 	if err != nil {
