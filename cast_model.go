@@ -33,7 +33,8 @@ func attributesFormat(list []Attribute) (string, string, string) {
 		if v.FatherAtt {
 			continue
 		}
-		str += attributeProperty(v.Notes, v.Name, v.Type, v.ModelName)
+		notes := formatNotes(v.Required, v.Notes)
+		str += attributeProperty(notes, v.Name, v.Type, v.ModelName)
 		str += "\n"
 		if !defaultClassType(v.Type, v.ModelName) {
 			impMap[v.ModelName] = true
@@ -95,4 +96,8 @@ func defaultClassType(Type, modelName string) bool {
 		}
 	}
 	return false
+}
+
+func formatNotes(required bool, notes string) string {
+	return fmt.Sprintf("Required:\t%v\nNotes:\t\t%s", required, notes)
 }
