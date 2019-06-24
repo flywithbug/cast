@@ -22,6 +22,8 @@ type API struct {
 	NoResponse    bool
 	NoParameter   bool
 	CategoryClass string
+
+	DocUrl string //api 地址
 }
 
 //数据模型
