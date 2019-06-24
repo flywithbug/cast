@@ -24,6 +24,7 @@ type API struct {
 	CategoryClass string
 
 	DocUrl string //api 地址
+
 }
 
 //数据模型
@@ -31,6 +32,7 @@ type DataModel struct {
 	Id   int    //对于的ApiId
 	Name string //添加前缀后的名字
 	//OriginName string //原始名字 for java
+
 	Type       string //model parameter
 	Alias      string //后续使用
 	Desc       string //模型描述
@@ -58,7 +60,14 @@ type FileModelCast struct {
 	Type string //model api
 	Md5  string
 
-	//.m文件聚合时使用
+	//.m文件聚合时使用 预留
 	MContent string
 	MImport  string
+}
+
+type FileJavaCast struct {
+	Name    string //文件名
+	Type    string //model api
+	Md5     string
+	Content string
 }
