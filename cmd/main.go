@@ -20,17 +20,20 @@ func CastModelFile() {
 	a1 := cast.Attribute{
 		Name:     "name",
 		Type:     "string",
+		Notes:    "name",
 		Required: true,
 	}
 	a2 := cast.Attribute{
 		Name:     "age",
 		Type:     "integer",
+		Notes:    "age",
 		Required: true,
 	}
 
 	a3 := cast.Attribute{
 		Name:     "gender",
 		Type:     "integer",
+		Notes:    "gender",
 		Required: true,
 	}
 
@@ -69,6 +72,7 @@ func CastModelFile() {
 		Name:          "checkBlackUser",
 		Action:        "user.ev.checkBlackUser",
 		Method:        "post",
+		Notes:         "note",
 		Path:          "api/",
 		ParameterName: "JYParaPeople",
 		ResponseName:  "JYRespPeopleData",

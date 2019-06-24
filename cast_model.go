@@ -33,7 +33,7 @@ func attributesFormat(list []Attribute) (string, string, string) {
 		if v.FatherAtt {
 			continue
 		}
-		str += attributeProperty(v.Name, v.Type, v.ModelName)
+		str += attributeProperty(v.Notes, v.Name, v.Type, v.ModelName)
 		str += "\n"
 		if !defaultClassType(v.Type, v.ModelName) {
 			impMap[v.ModelName] = true
@@ -52,21 +52,21 @@ func attributesFormat(list []Attribute) (string, string, string) {
 	return str, impStr, containerStr
 }
 
-func attributeProperty(name, aType, modelName string) string {
+func attributeProperty(note, name, aType, modelName string) string {
 	switch strings.ToLower(aType) {
 	case "string":
-		return fmt.Sprintf("@property (nonatomic, copy)  \tNSString *%s;", name)
+		return fmt.Sprintf("\n/**\n%s\n*/\n@property (nonatomic, copy)  \tNSString *%s;", note, name)
 	case "bool", "boolean":
-		return fmt.Sprintf("@property (nonatomic, assign)\tBOOL %s;", name)
+		return fmt.Sprintf("\n/**\n%s\n*/\n@property (nonatomic, assign)\tBOOL %s;", note, name)
 	case "number", "float":
-		return fmt.Sprintf("@property (nonatomic, strong)\tNSNumber *%s;", name)
+		return fmt.Sprintf("\n/**\n%s\n*/\n@property (nonatomic, strong)\tNSNumber *%s;", note, name)
 	case "integer":
-		return fmt.Sprintf("@property (nonatomic, assign)\tNSInteger %s;", name)
+		return fmt.Sprintf("\n/**\n%s\n*/\n@property (nonatomic, assign)\tNSInteger %s;", note, name)
 	case "object":
-		return fmt.Sprintf("@property (nonatomic, strong)\t%s *%s;", modelName, name)
+		return fmt.Sprintf("\n/**\n%s\n*/\n@property (nonatomic, strong)\t%s *%s;", note, modelName, name)
 	case "array":
 		modelName = modelNameTransform(modelName)
-		return fmt.Sprintf("@property (nonatomic, copy)  \tNSArray <%s *> *%s;", modelName, name)
+		return fmt.Sprintf("\n/**\n%s\n*/\n@property (nonatomic, copy)  \tNSArray <%s *> *%s;", note, modelName, name)
 	}
 	return ""
 }

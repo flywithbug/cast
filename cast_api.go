@@ -11,7 +11,7 @@ import (
 func castObjectiveApiFile(a API) FileModelCast {
 	fi := FileModelCast{}
 	fi.H = fmt.Sprintf(temp.ApiH, a.ParameterName,
-		a.ResponseName, a.Name, a.Name,
+		a.ResponseName, a.Name, a.Notes, a.Name,
 		a.ParameterName, a.ResponseName)
 	fi.M = fmt.Sprintf(temp.ApiM, a.Name, a.Name, a.Name, a.ParameterName, a.ResponseName, a.Action, a.ResponseName)
 

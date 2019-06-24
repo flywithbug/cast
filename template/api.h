@@ -5,6 +5,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JYMapiNetworkClient ({*para*})
+
+/**
+ {*para*}
+ */
 - (nullable NSURLSessionDataTask *)mapi_{*para*}_withModuleType:(JYModuleType)type
 		para:({*para*} * _Nullable)param
 		progress:(nullable void (^)(NSProgress *_Nonnull  uploadProgress))uploadProgress

@@ -9,7 +9,7 @@ type API struct {
 	Path          string
 	Method        string
 	Alias         string //别名(中文名)
-	Notes         string
+	Notes         string //接口说明
 	ParameterName string //参数模型名字
 	ResponseName  string //返回体模型名字
 	//ParaOriginName string
