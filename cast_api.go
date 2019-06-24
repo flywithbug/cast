@@ -35,14 +35,13 @@ func castObjectiveApiFile(a API) FileModelCast {
 }
 
 func formatApiNotes(a API) string {
-	str := fmt.Sprintf("Author:\t\t%s\nAddTime:\t%s\nUpdateTime:\t%s\nNotes:\t\t%s\n",
-		a.Author, formatUninxTims(a.AddTime), formatUninxTims(a.UpDateTime), a.Notes)
-
+	str := fmt.Sprintf("Url:\t\t%s\nAuthor:\t\t%s\nAddTime:\t%s\nUpdateTime:\t%s\nStatus:\t\t%s\nNotes:\t\t%s",
+		a.DocUrl, a.Author, formatUninxTims(a.AddTime), formatUninxTims(a.UpDateTime), a.Status, a.Notes)
 	return str
 }
 
 func formatUninxTims(timesamtp int) string {
 	tm := time.Unix(int64(timesamtp), 0)
 	//fmt.Println(timesamtp, tm)
-	return fmt.Sprintf(tm.Format("2006-01-02"))
+	return fmt.Sprintf(tm.Format("2006-01-02 15:04:05"))
 }
