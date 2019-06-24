@@ -73,11 +73,11 @@ func attributeProperty(name, aType, modelName string) string {
 
 func modelNameTransform(name string) string {
 	switch strings.ToLower(name) {
-	case "string":
+	case "string", "nsstring":
 		return "NSString"
-	case "bool", "boolean", "number", "float", "integer":
+	case "bool", "boolean", "number", "float", "integer", "nsnumber":
 		return "NSNumber"
-	case "array":
+	case "array", "nsarray":
 		return "NSArray"
 	}
 	return name
@@ -96,13 +96,3 @@ func defaultClassType(Type, modelName string) bool {
 	}
 	return false
 }
-
-//func defalutClassKitType(Type string) bool {
-//	switch strings.ToLower(Type) {
-//	case "string", "bool", "boolean", "number", "float", "integer":
-//		return true
-//	case "nsstring", "nsnumber", "nsinteger", "nsarray":
-//		return true
-//	}
-//	return false
-//}
