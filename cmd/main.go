@@ -76,8 +76,6 @@ func CastModelFile() {
 		Path:          "api/",
 		ParameterName: "JYParaPeople",
 		ResponseName:  "JYRespPeopleData",
-		//ParaOriginName: "CheckBlackUser",
-		//RespOriginName: "CheckBlackUser",
 		NoResponse:    false,
 		NoParameter:   false,
 		CategoryClass: "JYMapiNetworkClient",

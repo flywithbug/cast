@@ -12,6 +12,9 @@ type Template struct {
 	ApiGetM        string
 	ModelH         string
 	ModelM         string
+	JavaApi        string
+	JavaModel      string
+	JavaPackage    string
 	BaseModelClass string
 	BaseParaClass  string
 	BaseApiClass   string
@@ -22,6 +25,9 @@ func NewTemplate() Template {
 	b, _ := Asset("template/api.m")
 	a1, _ := Asset("template/api_get.h")
 	b1, _ := Asset("template/api_get.m")
+	a2, _ := Asset("template/java_api")
+	b2, _ := Asset("template/java_model")
+	b22, _ := Asset("template/java_package")
 	c, _ := Asset("template/model.h")
 	d, _ := Asset("template/model.m")
 	e, _ := Asset("template/const")
@@ -36,6 +42,9 @@ func NewTemplate() Template {
 		ApiM:           strings.ReplaceAll(string(b), "{*para*}", "%s"),
 		ApiGetH:        strings.ReplaceAll(string(a1), "{*para*}", "%s"),
 		ApiGetM:        strings.ReplaceAll(string(b1), "{*para*}", "%s"),
+		JavaApi:        strings.ReplaceAll(string(a2), "{*para*}", "%s"),
+		JavaModel:      strings.ReplaceAll(string(b2), "{*para*}", "%s"),
+		JavaPackage:    string(b22),
 		ModelH:         strings.ReplaceAll(string(c), "{*para*}", "%s"),
 		ModelM:         strings.ReplaceAll(string(d), "{*para*}", "%s"),
 		BaseModelClass: list[0],

@@ -23,8 +23,8 @@ type API struct {
 	NoParameter   bool
 	CategoryClass string
 
-	DocUrl string //api 地址
-
+	DocUrl         string //api 地址
+	ParameterModel DataModel
 }
 
 //数据模型

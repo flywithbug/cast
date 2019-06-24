@@ -1,0 +1,21 @@
+{*para*}
+
+/**
+{*para*}
+ */
+@Data
+@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
+public class EBike{*para*}Request extends EBikeMustLoginApiRequest<{*para*}> {
+{*para*}
+
+    public EBike{*para*}Request() {
+        super("{*para*}");
+    }
+
+    @Override
+    public Class<{*para*}> getDataClazz() {
+        return {*para*}.class;
+    }
+
+}

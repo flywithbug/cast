@@ -1,0 +1,9 @@
+{*para*}
+
+@Data
+@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class {*para*} {
+{*para*}
+}
