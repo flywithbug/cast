@@ -10,9 +10,9 @@ func formatJavaProperty(note, name, aType, modelName string) string {
 	case "string":
 		return fmt.Sprintf("\tprivate\t\tString %s;//%s", name, note)
 	case "bool", "boolean":
-		return fmt.Sprintf("\tprivate\t\tboolean %s//%s;", name, note)
+		return fmt.Sprintf("\tprivate\t\tboolean %s;//%s", name, note)
 	case "number", "float":
-		return fmt.Sprintf("\tprivate\t\tfloat %s//%s;", name, note)
+		return fmt.Sprintf("\tprivate\t\tfloat %s;//%s", name, note)
 	case "integer":
 		return fmt.Sprintf("\tprivate\t\tint %s;//%s", name, note)
 	case "object":
