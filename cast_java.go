@@ -70,5 +70,42 @@ func formatModelName(name string) string {
 }
 
 func formatApiName(name string) string {
-	return fmt.Sprintf("EBike%sRequest", strFirstToUpper(name))
+	name = fmt.Sprintf("EBike%sRequest", strFirstToUpper(name))
+	return strHumpToUpper(name)
+}
+
+/**
+ * 字符串首字母转化为大写 ios_bbbbbbbb -> iosBbbbbbbbb
+ */
+func strHumpToUpper(str string) string {
+	if len(str) < 1 {
+		return ""
+	}
+	temp := strings.Split(str, "_")
+	var upperStr string
+	for y := 0; y < len(temp); y++ {
+		vv := []rune(temp[y])
+		if y != 0 {
+			for i := 0; i < len(vv); i++ {
+				if i == 0 {
+					vv[i] -= 32
+					upperStr += string(vv[i]) // + string(vv[i+1])
+				} else {
+					upperStr += string(vv[i])
+				}
+			}
+		}
+	}
+	return capitalize(temp[0]) + upperStr
+}
+
+func capitalize(str string) string {
+	if len(str) < 1 {
+		return ""
+	}
+	strArry := []rune(str)
+	if strArry[0] >= 97 && strArry[0] <= 122 {
+		strArry[0] -= 32
+	}
+	return string(strArry)
 }
