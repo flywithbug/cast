@@ -1,5 +1,7 @@
 package cast
 
+import "sort"
+
 //Api模型
 type API struct {
 	Id            int
@@ -39,6 +41,14 @@ type DataModel struct {
 	ParentName string //父类名称
 	Attributes []Attribute
 	OriginType string
+
+	Son bool
+}
+
+func (dm *DataModel) sortAttributes() {
+	sort.Slice(dm.Attributes, func(i, j int) bool {
+		return dm.Attributes[i].Name < dm.Attributes[j].Name
+	})
 }
 
 //数据属性模型

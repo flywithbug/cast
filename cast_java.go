@@ -69,3 +69,20 @@ func formatModelName(name string) string {
 func formatApiName(name string) string {
 	return fmt.Sprintf("EBike%sRequest", strFirstToUpper(name))
 }
+
+func castJavaModels(models []DataModel) []FileJavaCast {
+	//for _,v := range models {
+	//
+	//}
+
+	return nil
+}
+
+//func convertInt2String(id int) string {
+//	str := fmt.Sprintf("%d", id)
+//	temp := ""
+//	for k := range str {
+//		temp += fmt.Sprintf("%c", str[k]+49)
+//	}
+//	return strFirstToUpper(temp)
+//}
