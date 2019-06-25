@@ -128,3 +128,16 @@ func IsDefaultType(typeS string) bool {
 	}
 	return false
 }
+
+func Cast2JavaFileModel(apis []API, models []DataModel) ([]FileJavaCast, error) {
+	err := Valid(apis, models)
+	if err != nil {
+		return nil, err
+	}
+	return cast2JavaModel(apis, models), nil
+}
+
+func cast2JavaModel(apis []API, models []DataModel) []FileJavaCast {
+
+	return nil
+}

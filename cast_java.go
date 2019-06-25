@@ -11,12 +11,12 @@ import (
 func castJavaApi(a API) FileJavaCast {
 	fi := FileJavaCast{}
 	notes := formatApiNotes(a)
-
-	fi.Name = fmt.Sprintf("EBike%sRequest", strFirstToUpper(a.Name))
+	responseName := formatModelName(a.ResponseName)
 	fi.Type = "api"
-	impStr, attStr := formatPackageImport(a.ResponseName, "api", a.ParameterModel)
-	fi.Content = fmt.Sprintf(temp.JavaApi, impStr, notes, a.Name, a.ResponseName, attStr, a.Name,
-		a.Action, a.ResponseName, a.ResponseName)
+	fi.Name = formatApiName(a.Name)
+	impStr, attStr := formatPackageImport(responseName, "api", a.ParameterModel)
+	fi.Content = fmt.Sprintf(temp.JavaApi, impStr, notes, fi.Name, responseName, attStr, fi.Name,
+		a.Action, responseName, responseName)
 	fi.Md5 = utils.Md5(fi.Content)
 	return fi
 }
@@ -29,6 +29,9 @@ func formatPackageImport(respName, aType string, para DataModel) (impStr, attStr
 	}
 	hasList := false
 	for _, v := range para.Attributes {
+
+		v.ModelName = formatModelName(v.ModelName)
+
 		if !defaultClassType(v.Type, v.ModelName) {
 			impStr += fmt.Sprintf("import %s.bean.%s;\n", temp.JavaPackage, v.ModelName)
 		}
@@ -47,8 +50,7 @@ func formatPackageImport(respName, aType string, para DataModel) (impStr, attStr
 
 func castJavaModel(model DataModel) FileJavaCast {
 	fi := FileJavaCast{}
-	model.Name = strings.ReplaceAll(model.Name, "JYResp", "EBikeResp")
-	model.Name = strings.ReplaceAll(model.Name, "JYPara", "EBikePara")
+	model.Name = formatModelName(model.Name)
 	fi.Name = model.Name
 	fi.Type = "bean"
 
@@ -56,4 +58,14 @@ func castJavaModel(model DataModel) FileJavaCast {
 	fi.Content = fmt.Sprintf(temp.JavaModel, impStr, model.Name, attStr)
 	fi.Md5 = utils.Md5(fi.Content)
 	return fi
+}
+
+func formatModelName(name string) string {
+	name = strings.ReplaceAll(name, "JYResp", "EBikeResp")
+	name = strings.ReplaceAll(name, "JYPara", "EBikePara")
+	return name
+}
+
+func formatApiName(name string) string {
+	return fmt.Sprintf("EBike%sRequest", strFirstToUpper(name))
 }
