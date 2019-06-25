@@ -27,6 +27,8 @@ type API struct {
 
 	DocUrl         string //api 地址
 	ParameterModel DataModel
+
+	RequiredToken bool
 }
 
 //数据模型

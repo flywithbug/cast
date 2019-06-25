@@ -6,7 +6,7 @@
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
-public class {*para*} extends EBikeMustLoginApiRequest<{*para*}> {
+public class {*para*} extends {*para*}<{*para*}> {
 {*para*}
 
     public {*para*}() {

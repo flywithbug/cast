@@ -17,8 +17,12 @@ func castJavaApi(a API) FileJavaCast {
 	}
 	fi.Type = "api"
 	fi.Name = formatApiName(a.Name)
+	apiClass := temp.JavaApiClass
+	if a.RequiredToken {
+		apiClass = temp.JavaApiReqLoginClass
+	}
 	impStr, attStr := formatPackageImport(responseName, "api", a.ParameterModel)
-	fi.Content = fmt.Sprintf(temp.JavaApi, impStr, notes, fi.Name, responseName, attStr, fi.Name,
+	fi.Content = fmt.Sprintf(temp.JavaApi, impStr, notes, fi.Name, apiClass, responseName, attStr, fi.Name,
 		a.Action, responseName, responseName)
 	fi.Md5 = utils.Md5(fi.Content)
 	return fi
