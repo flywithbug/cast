@@ -12,7 +12,7 @@ import (
 
 func main() {
 
-	CastModelFile()
+	CastJavaFile()
 
 }
 
@@ -84,7 +84,7 @@ func CastModelFile() {
 		Author:        "me",
 		Status:        "done",
 	}
-	list, err := cast.Cast([]cast.API{api}, []cast.DataModel{md, md1})
+	list, _, err := cast.Cast([]cast.API{api}, []cast.DataModel{md, md1})
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -128,4 +128,8 @@ func WriteFileString(path, content string, cover bool) error {
 	}
 	_, err = fil.WriteString(content)
 	return err
+}
+
+func CastJavaFile() {
+
 }

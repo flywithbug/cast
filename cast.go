@@ -31,25 +31,31 @@ func apiKey(id int) string {
 	return fmt.Sprintf("id:%d", id)
 }
 
-func Cast(apis []API, models []DataModel) ([]FileModelCast, error) {
+func Cast(apis []API, models []DataModel) ([]FileModelCast, []FileJavaCast, error) {
 	err := Valid(apis, models)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	return cast2FileModel(apis, models), nil
+	list1, list2 := cast2FileModel(apis, models)
+	return list1, list2, nil
 }
 
-func cast2FileModel(apis []API, models []DataModel) []FileModelCast {
+func cast2FileModel(apis []API, models []DataModel) ([]FileModelCast, []FileJavaCast) {
 	list := make([]FileModelCast, 0)
+	list1 := make([]FileJavaCast, 0)
 	for _, v := range apis {
 		fm := castObjectiveApiFile(v)
 		list = append(list, fm)
+		list1 = append(list1, castJavaApi(v))
 	}
 	for _, v := range models {
 		fm := castObjectiveModelFile(v)
 		list = append(list, fm)
+		if v.Type == "model" || v.Son {
+			list1 = append(list1, castJavaModel(v))
+		}
 	}
-	return list
+	return list, list1
 }
 
 func Valid(apis []API, models []DataModel) error {
@@ -138,6 +144,15 @@ func Cast2JavaFileModel(apis []API, models []DataModel) ([]FileJavaCast, error) 
 }
 
 func cast2JavaModel(apis []API, models []DataModel) []FileJavaCast {
+	list := make([]FileJavaCast, 0)
+	for _, v := range apis {
+		list = append(list, castJavaApi(v))
+	}
+	for _, v := range models {
+		if v.Son {
+			list = append(list, castJavaModel(v))
+		}
+	}
 
-	return nil
+	return list
 }

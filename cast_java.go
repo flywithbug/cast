@@ -12,6 +12,9 @@ func castJavaApi(a API) FileJavaCast {
 	fi := FileJavaCast{}
 	notes := formatApiNotes(a)
 	responseName := formatModelName(a.ResponseName)
+	if a.NoResponse {
+		responseName = "Object"
+	}
 	fi.Type = "api"
 	fi.Name = formatApiName(a.Name)
 	impStr, attStr := formatPackageImport(responseName, "api", a.ParameterModel)
@@ -24,7 +27,7 @@ func castJavaApi(a API) FileJavaCast {
 func formatPackageImport(respName, aType string, para DataModel) (impStr, attStr string) {
 	impStr = fmt.Sprintf("package %s.%s;", temp.JavaPackage, aType)
 	impStr += "\n"
-	if respName != "" {
+	if respName != "" && respName != "Object" {
 		impStr += fmt.Sprintf("import %s.bean.%s;\n", temp.JavaPackage, respName)
 	}
 	hasList := false
@@ -69,20 +72,3 @@ func formatModelName(name string) string {
 func formatApiName(name string) string {
 	return fmt.Sprintf("EBike%sRequest", strFirstToUpper(name))
 }
-
-func castJavaModels(models []DataModel) []FileJavaCast {
-	//for _,v := range models {
-	//
-	//}
-
-	return nil
-}
-
-//func convertInt2String(id int) string {
-//	str := fmt.Sprintf("%d", id)
-//	temp := ""
-//	for k := range str {
-//		temp += fmt.Sprintf("%c", str[k]+49)
-//	}
-//	return strFirstToUpper(temp)
-//}
