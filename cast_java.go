@@ -37,7 +37,7 @@ func formatPackageImport(respName, aType string, para DataModel) (impStr, attStr
 	}
 	hasList := false
 	for _, v := range para.Attributes {
-		if v.Name == "action" {
+		if javaFilterAtt(v.Name) {
 			continue
 		}
 		v.ModelName = formatModelName(v.ModelName)
@@ -123,4 +123,12 @@ func formatListImport(containt string) string {
 		return "import java.util.List;"
 	}
 	return ""
+}
+
+func javaFilterAtt(name string) bool {
+	if name == "action" || name == "version" ||
+		name == "systemCode" || name == "apiUrl" || name == "ticket" {
+		return true
+	}
+	return false
 }
