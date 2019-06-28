@@ -12,7 +12,7 @@ func formatJavaProperty(note, name, aType, modelName string) string {
 	case "bool", "boolean":
 		return fmt.Sprintf("\tprivate boolean %s;//%s", name, note)
 	case "number", "nsnumber":
-		return fmt.Sprintf("\tprivate int %s;//%s", name, note)
+		return fmt.Sprintf("\tprivate long %s;//%s", name, note)
 	case "float":
 		return fmt.Sprintf("\tprivate float %s;//%s", name, note)
 	case "integer":
