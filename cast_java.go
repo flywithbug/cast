@@ -22,7 +22,8 @@ func castJavaApi(a API) FileJavaCast {
 		apiClass = temp.JavaApiReqLoginClass
 	}
 	impStr, attStr := formatPackageImport(responseName, "api", a.ParameterModel)
-	fi.Content = fmt.Sprintf(temp.JavaApi, impStr, notes, fi.Name, apiClass, responseName, attStr, fi.Name,
+
+	fi.Content = fmt.Sprintf(temp.JavaApi, impStr, apiClass, notes, fi.Name, apiClass, responseName, attStr, fi.Name,
 		a.Action, responseName, responseName)
 	fi.Md5 = utils.Md5(fi.Content)
 	return fi
@@ -36,7 +37,9 @@ func formatPackageImport(respName, aType string, para DataModel) (impStr, attStr
 	}
 	hasList := false
 	for _, v := range para.Attributes {
-
+		if v.Name == "action" {
+			continue
+		}
 		v.ModelName = formatModelName(v.ModelName)
 
 		if !defaultClassType(v.Type, v.ModelName) && v.ModelName != "" {
@@ -61,20 +64,21 @@ func castJavaModel(model DataModel) FileJavaCast {
 	fi.Name = model.Name
 	fi.Type = "bean"
 
-	impStr, attStr := formatPackageImport("", "bean", model)
+	_, attStr := formatPackageImport("", "bean", model)
+	impStr := formatListImport(attStr)
 	fi.Content = fmt.Sprintf(temp.JavaModel, impStr, model.Name, attStr)
 	fi.Md5 = utils.Md5(fi.Content)
 	return fi
 }
 
 func formatModelName(name string) string {
-	name = strings.ReplaceAll(name, "JYResp", "EBikeResp")
-	name = strings.ReplaceAll(name, "JYPara", "EBikePara")
+	name = strings.ReplaceAll(name, "JYResp", "YApiResp")
+	name = strings.ReplaceAll(name, "JYPara", "YApiPara")
 	return name
 }
 
 func formatApiName(name string) string {
-	name = fmt.Sprintf("EBike%sRequest", strFirstToUpper(name))
+	name = fmt.Sprintf("YApi%sRequest", strFirstToUpper(name))
 	return strHumpToUpper(name)
 }
 
@@ -112,4 +116,11 @@ func capitalize(str string) string {
 		strArry[0] -= 32
 	}
 	return string(strArry)
+}
+
+func formatListImport(containt string) string {
+	if strings.Contains(containt, "private List<") {
+		return "import java.util.List;"
+	}
+	return ""
 }

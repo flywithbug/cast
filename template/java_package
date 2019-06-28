@@ -1,1 +1,1 @@
-com.ebike.gencode.gen,EBikeApiRequest,EBikeMustLoginApiRequest
+com.ebike.gencode.gen.base,BaseApiRequest,BaseMustLoginApiRequest

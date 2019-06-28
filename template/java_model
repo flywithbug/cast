@@ -1,8 +1,13 @@
+package com.ebike.gencode.gen.bean;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 {*para*}
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 
 @Data
 @Accessors(chain = true)
-@EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class {*para*} {
 {*para*}
