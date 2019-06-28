@@ -39,7 +39,7 @@ func formatPackageImport(respName, aType string, para DataModel) (impStr, attStr
 
 		v.ModelName = formatModelName(v.ModelName)
 
-		if !defaultClassType(v.Type, v.ModelName) {
+		if !defaultClassType(v.Type, v.ModelName) && v.ModelName != "" {
 			impStr += fmt.Sprintf("import %s.bean.%s;\n", temp.JavaPackage, v.ModelName)
 		}
 		if v.Type == "array" {

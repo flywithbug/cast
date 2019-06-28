@@ -4,7 +4,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface {*para*}:{*para*}
+@interface {*para*}:{*para*}<NSCoding>
 {*para*}
 @end
 

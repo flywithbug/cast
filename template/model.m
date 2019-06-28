@@ -8,4 +8,13 @@
 	};
 }
 
+- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
+    [self jy_modelEncodeWithCoder:aCoder];
+}
+
+- (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
+    return [self jy_modelInitWithCoder:aDecoder];
+}
+
+
 @end
