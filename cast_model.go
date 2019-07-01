@@ -11,6 +11,7 @@ import (
 func castObjectiveModelFile(model DataModel) FileModelCast {
 	model.sortAttributes()
 	fi := FileModelCast{}
+	model.sortAttributes()
 	a, im, con := attributesFormat(model.Attributes)
 	fi.H = fmt.Sprintf(temp.ModelH, im, model.Name, model.ParentName, a)
 	fi.M = fmt.Sprintf(temp.ModelM, model.Name, model.Name, con)
