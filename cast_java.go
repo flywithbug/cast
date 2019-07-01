@@ -30,7 +30,6 @@ func castJavaApi(a API) FileJavaCast {
 }
 
 func formatPackageImport(respName, aType string, para DataModel) (impStr, attStr string) {
-	para.sortAttributes()
 	impStr = fmt.Sprintf("package %s.%s;", temp.JavaPackage, aType)
 	impStr += "\n"
 	if respName != "" && respName != "Object" {

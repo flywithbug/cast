@@ -9,7 +9,6 @@ import (
 )
 
 func castObjectiveModelFile(model DataModel) FileModelCast {
-	model.sortAttributes()
 	fi := FileModelCast{}
 	model.sortAttributes()
 	a, im, con := attributesFormat(model.Attributes)
