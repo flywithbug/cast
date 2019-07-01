@@ -5,6 +5,8 @@ import (
 
 	"strings"
 
+	"sort"
+
 	"github.com/flywithbug/utils"
 )
 
@@ -44,12 +46,21 @@ func attributesFormat(list []Attribute) (string, string, string) {
 			}
 		}
 	}
+
+	list1 := make([]string, 0)
 	for v := range impMap {
 		if !IsDefaultType(v) {
-			impStr += fmt.Sprintf("#import \"%s.h\"", v)
-			impStr += "\n"
+			list1 = append(list1, v)
+			//impStr += fmt.Sprintf("#import \"%s.h\"", v)
+			//impStr += "\n"
 		}
 	}
+	sort.Strings(list1)
+	for _, v := range list1 {
+		impStr += fmt.Sprintf("#import \"%s.h\"", v)
+		impStr += "\n"
+	}
+
 	containerStr = strings.ReplaceAll(containerStr, "\n", "")
 	return str, impStr, containerStr
 }
